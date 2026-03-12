@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Header Alignment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink: #940437;
+      --gold-light: #fffbf0;
+      --cream: #fff4ca;
+      --header-bg: #fffcf0;
+      --text-dark: #121212;
+      --desktop-max: 1440px;
+      --page-gutter: 32px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      background: #ffffff;
+      color: var(--text-dark);
+    }
+
+    .top-header {
+      background: var(--header-bg);
+      margin-bottom: 0;
+    }
+
+    .header-shell {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto;
+    }
+
+    .header-row {
+      min-height: 55px;
+      display: grid;
+      grid-template-columns: 424px minmax(220px, 1fr) auto;
+      align-items: center;
+      column-gap: clamp(24px, 4vw, 96px);
+    }
+
+    .search-box {
+      width: 424px;
+      height: 53px;
+      padding: 0 23px;
+      border: 1px solid var(--pink);
+      border-radius: 35px;
+      background: var(--gold-light);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(148, 4, 55, 0.7);
+      font-size: 18px;
+      font-weight: 300;
+    }
+
+    .search-icon {
+      width: 16px;
+      height: 16px;
+      border: 1.8px solid var(--pink);
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .search-icon::after {
+      content: "";
+      width: 7px;
+      height: 1.8px;
+      background: var(--pink);
+      position: absolute;
+      right: -4px;
+      bottom: -1px;
+      transform: rotate(45deg);
+      border-radius: 999px;
+    }
+
+    .brand-wrap {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .brand {
+      width: 116px;
+      height: auto;
+      display: block;
+      mix-blend-mode: multiply;
+    }
+
+    .actions {
+      display: inline-flex;
+      justify-self: end;
+      align-items: center;
+      gap: 12px;
+      min-width: max-content;
+    }
+
+    @media (min-width: 1600px) {
+      .top-header {
+        padding-top: 12px;
+      }
+
+      .header-shell {
+        width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      }
+
+      .header-row {
+        min-height: 68px;
+        grid-template-columns: 424px minmax(320px, 1fr) auto;
+      }
+
+      .brand {
+        width: 136px;
+      }
+    }
+
+    .icon-btn {
+      width: 53px;
+      height: 53px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--cream);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 0;
+    }
+
+    .icon-btn svg {
+      width: 22px;
+      height: 22px;
+      stroke: #7a5a0e;
+      fill: none;
+      stroke-width: 1.8;
+    }
+
+    .cart-count {
+      min-width: 23px;
+      height: 23px;
+      padding: 1px 4px;
+      border-radius: 999px;
+      background: var(--pink);
+      color: #ffffff;
+      position: absolute;
+      right: -2px;
+      top: -4px;
+      font-size: 16px;
+      line-height: 20px;
+      text-align: center;
+      font-weight: 400;
+    }
+
+    .login-btn {
+      height: 53px;
+      padding: 0 26px;
+      border: 0;
+      border-radius: 35px;
+      background: var(--pink);
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    .nav-strip {
+      width: 100%;
+      height: 58px;
+      background: linear-gradient(90deg, #a91b43 0%, #fbb624 100%);
+      display: flex;
+      align-items: center;
+      margin-bottom: 0;
+    }
+
+    .nav-menu {
+      width: min(709px, calc(100% - 48px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-link {
+      color: #fff9f9;
+      font-size: 19px;
+      font-weight: 400;
+      line-height: 26.6px;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    main {
+      margin: 0;
+    }
+
+    .hero-section {
+      width: 100%;
+      margin: 0;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 1962 / 698.98;
+      display: block;
+      object-fit: cover;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid #000000;
+    }
+
+    .section-heading {
+      margin: 56px 0 0;
+      text-align: center;
+      color: #ad8b4e;
+      font-size: 45px;
+      font-weight: 600;
+      line-height: 54px;
+    }
+
+    .collection-section {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto 72px;
+    }
+
+    .collection-grid {
+      margin-top: 36px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 34px 28px;
+      justify-items: center;
+    }
+
+    .collection-card {
+      width: 296px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .collection-image-wrap {
+      width: 100%;
+      aspect-ratio: 324.76 / 317.3;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #d9d9d9;
+    }
+
+    .collection-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .collection-name {
+      margin: 18px 0 14px;
+      color: #121212;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 33.6px;
+    }
+
+    .collection-button {
+      min-width: 120px;
+      height: 34px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 10px;
+      background: #f3a349;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24px;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .featured-section {
+      position: relative;
+      margin-top: 24px;
+      padding: 72px 0 84px;
+      background: #fbf2d1;
+      overflow: hidden;
+    }
+
+    .featured-decor {
+      position: absolute;
+      width: 358px;
+      height: 358px;
+      display: block;
+      object-fit: cover;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .featured-decor-left {
+      bottom: 0;
+      left: 0;
+      transform-origin: center;
+    }
+
+    .featured-decor-right {
+      top: 0;
+      right: 0;
+    }
+
+    .featured-inner {
+      position: relative;
+      z-index: 1;
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto;
+    }
+
+    .featured-header {
+      text-align: center;
+    }
+
+    .featured-title {
+      margin: 0;
+      color: #ad8b4e;
+      font-size: 45px;
+      font-weight: 600;
+      line-height: 54px;
+    }
+
+    .featured-subtitle {
+      margin: 14px 0 0;
+      color: #4d4217;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 21.6px;
+    }
+
+    .featured-grid {
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .featured-card {
+      position: relative;
+      min-width: 0;
+    }
+
+    .featured-image-wrap {
+      width: 100%;
+      aspect-ratio: 405 / 489.44;
+      border-radius: 15px;
+      overflow: hidden;
+      background: #d9d9d9;
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: 15px;
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 12px;
+      left: 13px;
+      min-width: 79px;
+      height: 22px;
+      padding: 0 10px;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #a91b43 0%, #fbb624 100%);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: center;
+    }
+
+    .featured-name {
+      margin: 18px 0 0px;
+      color: #4d4d4d;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 30px;
+    }
+
+    .featured-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .featured-price {
+      color: #744707;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 24px;
+    }
+
+    .featured-action {
+      width: 27px;
+      height: 32px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .featured-action img {
+      width: 27px;
+      height: 32px;
+      display: block;
+      margin-right: 20px;
+    }
+
+    .featured-progress {
+      width: min(563px, 100%);
+      margin: 34px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: #999894;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25.2px;
+    }
+
+    .featured-progress-track {
+      position: relative;
+      flex: 1;
+      height: 2.4px;
+      background: #999894;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .featured-progress-fill {
+      width: 37.5%;
+      height: 100%;
+      background: #121212;
+      border-radius: 999px;
+    }
+
+    .category-section {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 72px auto 88px;
+    }
+
+    .category-grid {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 28px;
+      justify-items: center;
+    }
+
+    .category-card {
+      width: 196px;
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .category-image-ring {
+      width: 195px;
+      height: 195px;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 1px solid #a91b43;
+      display: grid;
+      place-items: center;
+    }
+
+    .category-image {
+      width: 175px;
+      height: 175px;
+      display: block;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .category-name {
+      margin: 18px 0 0;
+      color: #121212;
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 27.6px;
+    }
+
+    .promo-section {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto 84px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .offer-card,
+    .wedding-card {
+      min-width: 0;
+      min-height: 520px;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      border: 1px solid #a91b43;
+    }
+
+    .offer-card {
+      position: relative;
+      background: linear-gradient(90deg, #e4cbad 0%, #ead088 100%);
+      padding: 60px 54px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .offer-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("images/Rectangle 31.png") center/cover no-repeat;
+    }
+
+    .offer-content {
+      position: relative;
+      z-index: 1;
+      max-width: 363px;
+      margin-left: auto;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    .offer-title {
+      margin: 0;
+      color: #2d2d2d;
+      font-size: 35px;
+      font-weight: 600;
+      line-height: 41px;
+    }
+
+    .offer-text {
+      margin: 18px 0 24px;
+      color: #2d2d2d;
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 25px;
+      text-align: justify;
+    }
+
+    .offer-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #ba4848;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25.2px;
+      text-decoration: none;
+    }
+
+    .offer-link-arrow {
+      width: 18px;
+      height: 15px;
+      display: block;
+    }
+
+    .wedding-card {
+      background: linear-gradient(90deg, #e4cbad 0%, #ead088 100%);
+      display: grid;
+      grid-template-columns: 389px minmax(0, 1fr);
+    }
+
+    .wedding-image-wrap {
+      min-height: 518px;
+    }
+
+    .wedding-image {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .wedding-content {
+      padding: 40px 30px 40px 34px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .wedding-heading-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      flex-shrink: 0;
+      overflow: visible;
+    }
+
+    .wedding-heading-svg text {
+      font-family: "Great Vibes", cursive;
+      font-size: 230px;
+      line-height: 100%;
+    }
+
+    .wedding-copy {
+      width: 283px;
+      max-width: 100%;
+      margin: 18px 0 26px;
+      color: #000000;
+      font-size: 15px;
+      font-weight: 300;
+      line-height: 20px;
+      letter-spacing: 0.07px;
+      text-transform: capitalize;
+    }
+
+    .wedding-button {
+      width: 155px;
+      height: 40px;
+      border: 0;
+      border-radius: 10px;
+      background: #5d2323;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25.2px;
+      cursor: pointer;
+    }
+
+    .testimonial-section {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto 84px;
+      padding-top: 8px;
+    }
+
+    .testimonial-kicker {
+      margin: 0;
+      color: #757575;
+      font-size: 25px;
+      font-weight: 400;
+      line-height: 27px;
+      text-align: center;
+    }
+
+    .testimonial-title {
+      padding-bottom: 60px;
+      margin: 12px 0 0;
+      color: #1d1d1c;
+      font-size: 40px;
+      font-weight: 700;
+      line-height: 60px;
+      letter-spacing: 0.18px;
+      text-transform: capitalize;
+      text-align: center;
+    }
+
+    .testimonial-quote {
+      width: 130px;
+      height: 94px;
+      margin: 22px auto 34px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #a91b43;
+      font-size: 54px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      min-height: 343px;
+      border-radius: 10px;
+      background: #e4e4e4;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: center;
+    }
+
+    .testimonial-card-title {
+      margin: 0 0 18px;
+      color: #000000;
+      font-size: 25px;
+      font-weight: 700;
+      line-height: 22.5px;
+      letter-spacing: 0.12px;
+    }
+
+    .testimonial-card-text {
+      margin: 0;
+      color: #787575;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 30px;
+    }
+
+    .testimonial-card-author {
+      margin: 18px 0 0;
+      color: #222222;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 30px;
+      letter-spacing: 0.09px;
+    }
+
+    .footer {
+      margin-top: 0;
+      background: #2b2a29;
+      color: #ffffff;
+    }
+
+    .footer-inner {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto;
+      padding: 32px 0 40px;
+      text-align: center;
+    }
+
+    .footer-heading {
+      margin: 0;
+      font-size: 45px;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .footer-brand {
+      margin: 8px 0 0;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .footer-address {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.45;
+    }
+
+    .footer-contact-row {
+      width: min(1233px, 100%);
+      max-width: 100%;
+      min-height: 61px;
+      margin-top: 27px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 72px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.4;
+      text-decoration: none;
+    }
+
+    .footer-icon {
+      width: 60px;
+      height: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+    }
+
+    .footer-icon img,
+    .footer-icon svg {
+      width: 26px;
+      height: 26px;
+      display: block;
+    }
+
+    .footer-touch {
+      margin: 60px 0 0;
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    .footer-socials {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .footer-bottom {
+      background: rgba(21, 21, 21, 0.72);
+      padding: 18px 0 16px;
+    }
+
+    .footer-links {
+      width: min(var(--desktop-max), calc(100% - (var(--page-gutter) * 2)));
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 38px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: #ffffff;
+      font-size: 23px;
+      font-weight: 400;
+      line-height: 1.2;
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      padding: 18px 16px 14px;
+      text-align: center;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1.3;
+    }
+
+
+    @media (min-width: 1025px) and (max-width: 1440px) {
+      :root {
+        --page-gutter: 55px;
+      }
+
+      .top-header {
+        min-height: 115.36px;
+      }
+
+      .header-shell {
+        width: min(1233px, calc(100% - 110px));
+      }
+
+      .header-row {
+        min-height: 115.36px;
+        grid-template-columns: 337px minmax(180px, 1fr) auto;
+        column-gap: 28px;
+        align-content: center;
+      }
+
+      .brand {
+        width: 135.12px;
+        max-height: 104.32px;
+      }
+
+      .search-box {
+        width: 337.33px;
+        height: 42.17px;
+        padding: 0 18.3px;
+        border-radius: 27.85px;
+        border-width: 0.8px;
+        font-size: 14.32px;
+        line-height: 20.05px;
+        gap: 6.36px;
+      }
+
+      .search-icon {
+        width: 14.32px;
+        height: 14.32px;
+        border-width: 1.4px;
+      }
+
+      .icon-btn {
+        width: 42.17px;
+        height: 42.17px;
+      }
+
+      .icon-btn img {
+        width: 19px;
+        height: 19px;
+      }
+
+      .cart-count {
+        min-width: 18.3px;
+        height: 18.3px;
+        padding: 0 3px;
+        font-size: 11px;
+        line-height: 18.3px;
+      }
+
+      .login-btn {
+        height: 42.17px;
+        padding: 0 20.69px;
+        border-radius: 27.85px;
+        font-size: 14.32px;
+        line-height: 20.05px;
+        font-weight: 400;
+      }
+
+      .nav-strip {
+        height: 46.14px;
+      }
+
+      .nav-menu {
+        width: min(500px, calc(100% - 40px));
+      }
+
+      .nav-link {
+        font-size: 15.12px;
+        line-height: 21.16px;
+      }
+
+      .hero-image {
+        aspect-ratio: 1561 / 556.09;
+      }
+
+      .section-heading,
+      .featured-title {
+        font-size: 35.8px;
+        line-height: 42.96px;
+      }
+
+      .collection-grid {
+        width: 1235px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(5, 235.49px);
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .collection-card {
+        width: 235px;
+      }
+
+      .collection-name {
+        font-size: 22.28px;
+        line-height: 26.73px;
+      }
+
+      .collection-button {
+        min-width: 95px;
+        height: 27px;
+        padding: 0 14px;
+        font-size: 15.91px;
+        line-height: 19.09px;
+      }
+
+      .featured-section {
+        padding: 56px 0 68px;
+      }
+
+      .featured-decor {
+        width: 285px;
+        height: 285px;
+      }
+
+      .featured-subtitle {
+        font-size: 14.32px;
+        line-height: 17.18px;
+      }
+
+      .featured-grid {
+        width: 1274px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(4, 322.21px);
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .featured-name {
+        font-size: 19.89px;
+        line-height: 23.87px;
+      }
+
+      .featured-price {
+        font-size: 15.91px;
+        line-height: 19.09px;
+      }
+
+      .featured-badge {
+        min-width: 63px;
+        height: 18px;
+        font-size: 11.14px;
+        line-height: 18px;
+      }
+
+      .featured-action img {
+        width: 21px;
+        height: 25px;
+        margin-right: 16px;
+      }
+
+      .featured-progress {
+        width: min(448px, 100%);
+        font-size: 14.32px;
+        line-height: 20.05px;
+      }
+
+      .category-section {
+        margin: 58px auto 72px;
+      }
+
+      .category-grid {
+        width: 1274px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(6, 155.93px);
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .category-card {
+        width: 156px;
+      }
+
+      .category-image-ring {
+        width: 155px;
+        height: 155px;
+      }
+
+      .category-image {
+        width: 139px;
+        height: 139px;
+      }
+
+      .category-name {
+        font-size: 18.3px;
+        line-height: 21.96px;
+      }
+
+      .promo-section {
+        width: 1311px;
+        max-width: calc(100% - 110px);
+        gap: 18px;
+        margin-bottom: 72px;
+        grid-template-columns: repeat(2, 650.78px);
+        justify-content: space-between;
+      }
+
+      .offer-card,
+      .wedding-card {
+        min-height: 414px;
+        border-radius: 23.87px;
+      }
+
+      .offer-card {
+        padding: 46px 44px;
+      }
+
+      .offer-content {
+        max-width: 289px;
+      }
+
+      .offer-title {
+        font-size: 27.85px;
+        line-height: 32.62px;
+      }
+
+      .offer-text {
+        font-size: 14.32px;
+        line-height: 19.89px;
+      }
+
+      .offer-link {
+        font-size: 14.32px;
+        line-height: 20.05px;
+      }
+
+      .offer-link-arrow {
+        width: 14px;
+        height: 13px;
+      }
+
+      .wedding-card {
+        grid-template-columns: 309px minmax(0, 1fr);
+      }
+
+      .wedding-image-wrap {
+        min-height: 412px;
+      }
+
+      .wedding-content {
+        padding: 30px 24px 28px;
+      }
+
+      .wedding-heading-svg text {
+        font-size: 150px;
+      }
+
+      .wedding-copy {
+        width: 225px;
+        font-size: 11.93px;
+        line-height: 15.91px;
+      }
+
+      .wedding-button {
+        width: 123px;
+        height: 32px;
+        border-radius: 8px;
+        font-size: 14.32px;
+        line-height: 20.05px;
+      }
+
+      .testimonial-section {
+        margin-bottom: 74px;
+      }
+
+      .testimonial-kicker {
+        font-size: 19.89px;
+        line-height: 21.48px;
+      }
+
+      .testimonial-title {
+        padding-bottom: 44px;
+        font-size: 31.82px;
+        line-height: 47.73px;
+      }
+
+      .testimonial-quote {
+        width: 103px;
+        height: 75px;
+        margin-bottom: 24px;
+      }
+
+      .testimonial-grid {
+        width: 1270px;
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        grid-template-columns: repeat(3, 415.29px);
+        justify-content: space-between;
+        gap: 0;
+      }
+
+      .testimonial-card {
+        min-height: 273px;
+        padding: 24px 22px;
+      }
+
+      .testimonial-card-title {
+        font-size: 19.89px;
+        line-height: 17.9px;
+      }
+
+      .testimonial-card-text,
+      .testimonial-card-author {
+        font-size: 15.91px;
+        line-height: 23.87px;
+      }
+
+      .footer-inner {
+        width: min(1233px, calc(100% - 110px));
+        padding: 42px 0 34px;
+      }
+
+      .footer-heading {
+        font-size: 35.8px;
+        line-height: 35.8px;
+      }
+
+      .footer-brand,
+      .footer-address {
+        font-size: 17.5px;
+        line-height: 27.85px;
+      }
+
+      .footer-contact-row {
+        width: min(1233px, 100%);
+        min-height: 48px;
+        gap: 40px;
+      }
+
+      .footer-contact-item {
+        font-size: 17.5px;
+        line-height: 20.69px;
+      }
+
+      .footer-icon {
+        width: 48px;
+        height: 48px;
+      }
+
+      .footer-icon img,
+      .footer-icon svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      .footer-touch {
+        margin-top: 44px;
+        font-size: 23.87px;
+        line-height: 23.87px;
+      }
+
+      .footer-socials {
+        margin-top: 24px;
+      }
+
+      .footer-bottom {
+        padding: 14px 0 12px;
+      }
+
+      .footer-links {
+        width: min(1178px, calc(100% - 110px));
+        gap: 28px;
+      }
+
+      .footer-links a {
+        font-size: 18.3px;
+        line-height: 15.91px;
+      }
+
+      .footer-copy {
+        font-size: 17.5px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .header-shell {
+        width: min(1920px, calc(100% - 72px));
+      }
+
+      .header-row {
+        grid-template-columns: minmax(280px, 424px) 1fr auto;
+        column-gap: 18px;
+      }
+
+      .brand {
+        width: 108px;
+      }
+
+      .collection-section {
+        width: calc(100% - 72px);
+      }
+
+      .featured-inner {
+        width: calc(100% - 72px);
+      }
+
+      .featured-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .category-section {
+        width: calc(100% - 72px);
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .promo-section {
+        width: calc(100% - 72px);
+        grid-template-columns: 1fr;
+      }
+
+      .offer-card,
+      .wedding-card {
+        min-height: 0;
+      }
+
+      .testimonial-section {
+        width: calc(100% - 72px);
+      }
+
+      .testimonial-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-inner,
+      .footer-links {
+        width: calc(100% - 72px);
+      }
+
+      .footer-contact-row {
+        gap: 28px;
+      }
+
+    }
+
+    @media (max-width: 760px) {
+      .header-row {
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+          "brand actions"
+          "search search";
+        row-gap: 12px;
+      }
+
+      .search-box {
+        width: 100%;
+      }
+
+      .brand-wrap {
+        position: static;
+        transform: none;
+        grid-area: brand;
+        justify-content: flex-start;
+      }
+
+      .actions {
+        grid-area: actions;
+      }
+
+      .search-box {
+        grid-area: search;
+      }
+
+      .nav-menu {
+        width: calc(100% - 24px);
+        justify-content: flex-start;
+      }
+
+      .section-heading {
+        margin-top: 42px;
+        font-size: 34px;
+        line-height: 42px;
+      }
+
+      .collection-section {
+        width: calc(100% - 24px);
+        margin-bottom: 56px;
+      }
+
+      .collection-grid {
+        margin-top: 28px;
+      }
+
+      .collection-name {
+        font-size: 24px;
+        line-height: 30px;
+      }
+
+      .featured-section {
+        padding: 48px 0 60px;
+      }
+
+      .featured-decor {
+        width: 180px;
+        height: 180px;
+        opacity: 0.45;
+      }
+
+      .featured-inner {
+        width: calc(100% - 24px);
+      }
+
+      .featured-title {
+        font-size: 34px;
+        line-height: 42px;
+      }
+
+      .featured-subtitle {
+        font-size: 16px;
+        line-height: 22px;
+      }
+
+      .featured-grid {
+        margin-top: 30px;
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .featured-name {
+        font-size: 22px;
+        line-height: 28px;
+      }
+
+      .featured-progress {
+        margin-top: 28px;
+        font-size: 16px;
+      }
+
+      .category-section {
+        width: calc(100% - 24px);
+        margin: 52px auto 64px;
+      }
+
+      .category-grid {
+        margin-top: 30px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px 18px;
+      }
+
+      .promo-section {
+        width: calc(100% - 24px);
+        margin-bottom: 64px;
+        gap: 24px;
+      }
+
+      .offer-card {
+        padding: 36px 24px;
+      }
+
+      .offer-title {
+        font-size: 30px;
+        line-height: 36px;
+      }
+
+      .wedding-card {
+        grid-template-columns: 1fr;
+      }
+
+      .wedding-image-wrap {
+        min-height: 320px;
+      }
+
+      .wedding-content {
+        padding: 28px 20px 32px;
+      }
+
+      .wedding-heading-svg {
+        width: min(320px, 100%);
+      }
+
+      .testimonial-section {
+        width: calc(100% - 24px);
+        margin-bottom: 64px;
+      }
+
+      .testimonial-kicker {
+        font-size: 22px;
+      }
+
+      .testimonial-title {
+        font-size: 32px;
+        line-height: 42px;
+      }
+
+      .testimonial-quote {
+        margin-bottom: 28px;
+      }
+
+      .testimonial-card {
+        min-height: 280px;
+        padding: 24px 20px;
+      }
+
+      .footer-inner,
+      .footer-links {
+        width: calc(100% - 24px);
+      }
+
+      .footer-heading {
+        font-size: 36px;
+      }
+
+      .footer-contact-row {
+        gap: 18px;
+        align-items: flex-start;
+      }
+
+      .footer-contact-item {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-links {
+        gap: 18px 24px;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <header class="top-header">
+    <div class="header-shell">
+      <div class="header-row">
+        <div class="search-box">
+          <span class="search-icon" aria-hidden="true"></span>
+          <span>Search</span>
+        </div>
+
+        <div class="brand-wrap">
+          <img class="brand" src="images/image 1.png" alt="Nandhini Silks" />
+        </div>
+
+        <div class="actions">
+          <button class="icon-btn" type="button" aria-label="Wishlist">
+            <img src="images/favorite.svg" alt="">
+          </button>
+
+          <button class="icon-btn" type="button" aria-label="Cart">
+            <img src="images/local_mall.svg" alt="">
+            <span class="cart-count">5</span>
+          </button>
+
+          <button class="login-btn" type="button">Sign in/Login</button>
+        </div>
+      </div>
+    </div>
+    <nav class="nav-strip" aria-label="Primary">
+      <div class="nav-menu">
+        <a class="nav-link" href="#">Sarees</a>
+        <a class="nav-link" href="#">Women</a>
+        <a class="nav-link" href="#">Mens</a>
+        <a class="nav-link" href="#">Kids</a>
+        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="#">Contact us</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero-section" aria-label="Main banner">
+      <img class="hero-image" src="images/banner 1.png" alt="Main collection banner" />
+    </section>
+
+    <section class="collection-section" aria-labelledby="saree-collections-title">
+      <h2 id="saree-collections-title" class="section-heading">Saree Collections</h2>
+      <div class="collection-grid">
+        <article class="collection-card">
+          <div class="collection-image-wrap">
+            <img class="collection-image" src="images/Image.png" alt="Pure Silk Saree" />
+          </div>
+          <h3 class="collection-name">Pure Silk Sareee</h3>
+          <button class="collection-button" type="button">Shop Now</button>
+        </article>
+
+        <article class="collection-card">
+          <div class="collection-image-wrap">
+            <img class="collection-image" src="images/Image (1).png" alt="Tissue Silk Saree" />
+          </div>
+          <h3 class="collection-name">Tissue Silk Saree</h3>
+          <button class="collection-button" type="button">Shop Now</button>
+        </article>
+
+        <article class="collection-card">
+          <div class="collection-image-wrap">
+            <img class="collection-image" src="images/Image (2).png" alt="Cotton Sarees" />
+          </div>
+          <h3 class="collection-name">Cotton Sarees</h3>
+          <button class="collection-button" type="button">Shop Now</button>
+        </article>
+
+        <article class="collection-card">
+          <div class="collection-image-wrap">
+            <img class="collection-image" src="images/Image (3).png" alt="Soft Silk Saree" />
+          </div>
+          <h3 class="collection-name">Soft Silk Saree</h3>
+          <button class="collection-button" type="button">Shop Now</button>
+        </article>
+
+        <article class="collection-card">
+          <div class="collection-image-wrap">
+            <img class="collection-image" src="images/Image (4).png" alt="Banarasi Silk Saree" />
+          </div>
+          <h3 class="collection-name">Banarasi Silk Saree</h3>
+          <button class="collection-button" type="button">Shop Now</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featured-textures-title">
+      <img class="featured-decor featured-decor-left" src="images/177ac6ca-e05e-455e-b85a-ac15d09dd31f 1.png" alt="" aria-hidden="true" />
+      <img class="featured-decor featured-decor-right" src="images/177ac6ca-e05e-455e-b85a-ac15d09dd31f 2.png" alt="" aria-hidden="true" />
+
+      <div class="featured-inner">
+        <div class="featured-header">
+          <h2 id="featured-textures-title" class="featured-title">Crafted Textures, Curated for Every Occasion</h2>
+          <p class="featured-subtitle">Fresh weaves, added daily — discover sarees handwoven just for you</p>
+        </div>
+
+        <div class="featured-grid">
+          <article class="featured-card">
+            <div class="featured-image-wrap">
+              <img class="featured-image" src="images/pro3.png" alt="Pure Silk Saree" />
+            </div>
+            <span class="featured-badge">10% Off</span>
+            <h3 class="featured-name">Pure Silk Saree</h3>
+            <div class="featured-meta">
+              <span class="featured-price">₹ 7,490 INR</span>
+              <button class="featured-action" type="button" aria-label="Save Pure Silk Saree">
+                <img src="images/Vector.svg" alt="" />
+              </button>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="featured-image-wrap">
+              <img class="featured-image" src="images/pro2.png" alt="Cotton Saree" />
+            </div>
+            <h3 class="featured-name">Cotton Saree</h3>
+            <div class="featured-meta">
+              <span class="featured-price">₹ 7,490 INR</span>
+              <button class="featured-action" type="button" aria-label="Save Cotton Saree">
+                <img src="images/Vector.svg" alt="" />
+              </button>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="featured-image-wrap">
+              <img class="featured-image" src="images/pro1.png" alt="Tissue Silk Saree" />
+            </div>
+            <span class="featured-badge">15% Off</span>
+            <h3 class="featured-name">Tissue Silk Saree</h3>
+            <div class="featured-meta">
+              <span class="featured-price">₹ 1,490 INR</span>
+              <button class="featured-action" type="button" aria-label="Save Tissue Silk Saree">
+                <img src="images/Vector.svg" alt="" />
+              </button>
+            </div>
+          </article>
+
+          <article class="featured-card">
+            <div class="featured-image-wrap">
+              <img class="featured-image" src="images/pro.png" alt="Cotton Silk Saree" />
+            </div>
+            <span class="featured-badge">18 % Off</span>
+            <h3 class="featured-name">Cotton Silk Saree</h3>
+            <div class="featured-meta">
+              <span class="featured-price">₹ 7,490 INR</span>
+              <button class="featured-action" type="button" aria-label="Save Cotton Silk Saree">
+                <img src="images/Vector.svg" alt="" />
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <div class="featured-progress" aria-label="Featured products progress">
+          <span>01</span>
+          <div class="featured-progress-track" aria-hidden="true">
+            <div class="featured-progress-fill"></div>
+          </div>
+          <span>04</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="category-section" aria-labelledby="browse-categories-title">
+      <h2 id="browse-categories-title" class="section-heading">Browse Our Categories</h2>
+      <div class="category-grid">
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9.png" alt="Sarees" />
+          </div>
+          <h3 class="category-name">Sarees</h3>
+        </article>
+
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9 (1).png" alt="Shirts" />
+          </div>
+          <h3 class="category-name">Shirts</h3>
+        </article>
+
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9 (2).png" alt="Girl" />
+          </div>
+          <h3 class="category-name">Girl</h3>
+        </article>
+
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9 (3).png" alt="Boy" />
+          </div>
+          <h3 class="category-name">Boy</h3>
+        </article>
+
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9 (4).png" alt="Half Saree" />
+          </div>
+          <h3 class="category-name">Half Saree</h3>
+        </article>
+        <article class="category-card">
+          <div class="category-image-ring">
+            <img class="category-image" src="images/Rectangle 9 5.png" alt="Half Saree" />
+          </div>
+          <h3 class="category-name">Half Saree</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="promo-section" aria-label="Promotions">
+      <article class="offer-card">
+        <div class="offer-content">
+          <h2 class="offer-title">Up to 20% off, only for this month</h2>
+          <p class="offer-text">Shop now and enjoy up to 10% off on selected items. Limited time only!</p>
+          <a class="offer-link" href="#">
+            <span>Shop Now</span>
+            <img class="offer-link-arrow" src="images/Vector1.svg" alt="" />
+          </a>
+        </div>
+      </article>
+
+      <article class="wedding-card">
+        <div class="wedding-image-wrap">
+          <img class="wedding-image" src="images/image 2.png" alt="Wedding collection" />
+        </div>
+        <div class="wedding-content">
+          <svg class="wedding-heading-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet" aria-label="Wedding Collections">
+            <defs>
+              <linearGradient id="textFill" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#A91B43"></stop>
+                <stop offset="105%" stop-color="#F2A329"></stop>
+              </linearGradient>
+              <radialGradient id="strokeGradient" cx="50%" cy="50%" r="40%">
+                <stop offset="0%" stop-color="#A91B43"></stop>
+                <stop offset="50%" stop-color="#EF9F29"></stop>
+                <stop offset="80%" stop-color="#A91B43"></stop>
+              </radialGradient>
+            </defs>
+            <text x="55%" y="170" text-anchor="middle" fill="url(#textFill)" stroke="url(#strokeGradient)" stroke-width="3" paint-order="stroke">Wedding</text>
+            <text x="50%" y="380" text-anchor="middle" fill="url(#textFill)" stroke="url(#strokeGradient)" stroke-width="3" paint-order="stroke">Collections</text>
+          </svg>
+          <p class="wedding-copy">Flamboyantly charming, the Scarlet <br>Satin Delight Saree embodies grandeur <br>and romance. Rendered in a vivacious shade of red.</p>
+          <button class="wedding-button" type="button">Shop Now</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="testimonial-section" aria-labelledby="testimonial-title">
+      <p class="testimonial-kicker">Testimonial</p>
+      <h2 id="testimonial-title" class="testimonial-title">Speaking from their hearts</h2>
+      <div class="testimonial-quote" aria-hidden="true"><img src="images/Vector2.svg" alt=""></div>
+      <div class="testimonial-grid">
+        <article class="testimonial-card">
+          <h3 class="testimonial-card-title">Beautiful elegant<br>saree</h3>
+          <p class="testimonial-card-text">I recently ordered this saree online, and I am extremely happy with my purchase. The saree <br>looked exactly like the pictures shown on the <br>website. The color was vibrant, and the fabric <br>quality was even better than I expected.</p>
+          <p class="testimonial-card-author">Ramya</p>
+        </article>
+
+        <article class="testimonial-card">
+          <h3 class="testimonial-card-title">Excellent collection - conveniently<br>arranged</h3>
+          <p class="testimonial-card-text">Comfortable, feather-light, and easy to wear. specially i like the packaging 👌🏻</p>
+          <p class="testimonial-card-author">Kanmani</p>
+        </article>
+
+        <article class="testimonial-card">
+          <h3 class="testimonial-card-title">Quality of saree</h3>
+          <p class="testimonial-card-text">My product is very beautiful,,, The product I purchased was exactly as I thought, in the <br>same fabric, same colour and combination, I <br>am very happy with this saree.।</p>
+          <p class="testimonial-card-author">Yazh</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <h2 class="footer-heading">Contact us</h2>
+      <p class="footer-brand">Nandhini silks</p>
+      <p class="footer-address">416/9 Aranmanai street , S.v.nagaram</p>
+      <p class="footer-address">Arni-632317, Thiruvannamalai dist</p>
+
+      <div class="footer-contact-row">
+        <a class="footer-contact-item" href="tel:+919629552822">
+          <span class="footer-icon">
+            <img src="images/telephone.svg" alt="" />
+          </span>
+          <span>+919629552822</span>
+        </a>
+
+        <a class="footer-contact-item" href="tel:+919994504410">
+          <span class="footer-icon">
+            <img src="images/telephone.svg" alt="" />
+          </span>
+          <span>+919994504410</span>
+        </a>
+
+        <a class="footer-contact-item" href="mailto:contact:nandhinisilks.arani@gmail.com">
+          <span class="footer-icon">
+            <img src="images/email.svg" alt="" />
+          </span>
+          <span>contact: nandhinisilks.arani@gmail.com</span>
+        </a>
+      </div>
+
+      <p class="footer-touch">Get In Touch</p>
+      <div class="footer-socials" aria-label="Social links">
+        <a class="footer-icon" href="#" aria-label="Facebook">
+          <img src="images/Vector4.svg" alt="Facebook">
+        </a>
+        <a class="footer-icon" href="#" aria-label="Instagram">
+          <img src="images/Group.svg" alt="Instagram">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Exchange Policy</a>
+        <a href="#">Shipping Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Fabric Care</a>
+        <a href="#">Cancellation</a>
+      </div>
+    </div>
+
+    <div class="footer-copy">@ 2026 Nandhini Silks | By Reality Graphics</div>
+  </footer>
+</body>
+</html>
