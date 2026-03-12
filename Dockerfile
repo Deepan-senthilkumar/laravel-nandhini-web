@@ -10,15 +10,14 @@ RUN apt-get update && apt-get install -y \
     libicu-dev \
     libsqlite3-dev
 
-# Install PHP extensions required by Laravel
+# Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite zip intl
 
-# Enable Apache mod_rewrite
+# Enable Apache rewrite
 RUN a2enmod rewrite
 
 # Set Apache document root to Laravel public folder
-ENV APACHE_DOCUMENT_ROOT /var/www/html/public
-
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
 # Copy project files
@@ -36,15 +35,9 @@ RUN composer install --no-dev --optimize-autoloader
 # Create SQLite database file
 RUN mkdir -p database && touch database/database.sqlite
 
-# Run migrations and seed data
-# Note: Using --force for production migrations
-RUN php artisan migrate --force && php artisan db:seed --force
-
-# Set permissions required by Laravel
+# Fix Laravel permissions
 RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 775 storage
-RUN chmod -R 775 bootstrap/cache
-RUN chmod -R 775 database
+RUN chmod -R 775 storage bootstrap/cache database
 
 # Expose Apache port
 EXPOSE 80
