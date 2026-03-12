@@ -1,0 +1,786 @@
+@extends('layouts.app')
+
+@section('title', 'Nandhini Silks - Home')
+
+@push('styles')
+    <style>
+        .hero {
+            margin-bottom: 56px;
+        }
+
+        .collection-section,
+        .category-section,
+        .promo-section,
+        .testimonial-section {
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 24px;
+            padding-right: 24px;
+            box-sizing: border-box;
+        }
+
+        .featured-inner {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+            box-sizing: border-box;
+        }
+
+        .collection-section,
+        .featured-section,
+        .category-section {
+            margin-top: 0;
+            margin-bottom: 64px;
+        }
+
+        .collection-swiper,
+        .category-swiper,
+        .testimonial-swiper {
+            padding: 8px 4px 20px;
+        }
+
+        .collection-swiper {
+            padding-bottom: 42px;
+        }
+
+        .collection-scrollbar,
+        .category-scrollbar,
+        .testimonial-scrollbar {
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+            left: 24px !important;
+            right: 24px !important;
+            bottom: 8px !important;
+            width: auto !important;
+            height: 6px !important;
+            background: rgba(169, 27, 67, 0.12);
+        }
+
+        .collection-scrollbar .swiper-scrollbar-drag,
+        .category-scrollbar .swiper-scrollbar-drag,
+        .testimonial-scrollbar .swiper-scrollbar-drag {
+            background: linear-gradient(90deg, var(--nav-start) 0%, var(--nav-end) 100%);
+        }
+
+        .category-swiper {
+            padding-bottom: 42px;
+        }
+
+        .featured-swiper-container {
+            margin-top: 24px;
+        }
+
+        .featured-next,
+        .featured-prev {
+            top: 42%;
+            transform: translateY(-50%);
+        }
+
+        .featured-prev {
+            left: -18px;
+        }
+
+        .featured-next {
+            right: -18px;
+        }
+
+        .featured-subtitle {
+            margin-bottom: 0;
+        }
+
+        .collection-card,
+        .featured-card,
+        .testimonial-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .collection-name {
+            min-height: 52px;
+            margin: 16px 0 10px;
+            line-height: 1.3;
+        }
+
+        .collection-cta,
+        .featured-footer {
+            margin-top: auto;
+        }
+
+        .featured-name {
+            min-height: 46px;
+        }
+
+        .category-title,
+        .collection-title,
+        .featured-title,
+        .testimonial-title {
+            text-wrap: balance;
+        }
+
+        .category-card {
+            padding-bottom: 10px;
+        }
+
+        .promo-section {
+            margin-top: 8px;
+            margin-bottom: 72px;
+        }
+
+        .offer-content,
+        .wedding-content {
+            height: 100%;
+        }
+
+        .testimonial-section {
+            margin-top: 16px;
+            margin-bottom: 80px;
+        }
+
+        .testimonial-swiper {
+            padding: 12px 6px 42px;
+            overflow: hidden;
+        }
+
+        .testimonial-swiper .swiper-wrapper {
+            align-items: stretch;
+        }
+
+        .testimonial-swiper .swiper-slide {
+            height: auto;
+            display: flex;
+        }
+
+        .testimonial-vector-wrap {
+            margin-bottom: 32px;
+        }
+
+        .testimonial-card {
+            width: 100% !important;
+            flex: 1 1 auto !important;
+            min-width: 0;
+            min-height: 320px;
+            border-radius: 18px;
+            background: #e9e9e9;
+            padding: 28px 24px 24px;
+            box-sizing: border-box;
+        }
+
+        .testimonial-card-title {
+            min-height: auto;
+            margin-bottom: 18px;
+            line-height: 1.25;
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .testimonial-name {
+            margin-top: auto;
+            padding-top: 16px;
+        }
+
+        .testimonial-next,
+        .testimonial-prev {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .testimonial-prev {
+            left: -18px;
+        }
+
+        .testimonial-next {
+            right: -18px;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                margin-bottom: 36px;
+            }
+
+            .collection-section,
+            .category-section,
+            .promo-section,
+            .testimonial-section,
+            .featured-inner {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+
+            .collection-section,
+            .featured-section,
+            .category-section,
+            .promo-section,
+            .testimonial-section {
+                margin-bottom: 44px;
+            }
+
+            .collection-name,
+            .featured-name {
+                min-height: auto;
+            }
+
+            .featured-swiper-container {
+                margin-top: 18px;
+            }
+
+            .featured-next,
+            .featured-prev {
+                top: 38%;
+            }
+
+            .featured-prev {
+                left: -4px;
+            }
+
+            .featured-next {
+                right: -4px;
+            }
+
+            .collection-scrollbar,
+            .category-scrollbar,
+            .testimonial-scrollbar {
+                left: 16px !important;
+                right: 16px !important;
+            }
+
+            .testimonial-card {
+                min-height: auto;
+                padding: 22px 20px 20px;
+            }
+
+            .testimonial-text {
+                font-size: 15px;
+            }
+
+            .testimonial-prev {
+                left: -4px;
+            }
+
+            .testimonial-next {
+                right: -4px;
+            }
+
+        }
+    </style>
+@endpush
+
+@section('content')
+    <section class="hero" aria-label="Hero Banner">
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/banner 1.png') }}" alt="Banner 1" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="{{ asset('images/banner 1.jpg') }}" alt="Banner 2" />
+                </div>
+            </div>
+            <!-- Add Navigation and Pagination -->
+            <div class="swiper-button-next hero-next"></div>
+            <div class="swiper-button-prev hero-prev"></div>
+            <div class="swiper-pagination hero-pagination"></div>
+        </div>
+    </section>
+
+    <section class="collection-section" aria-labelledby="saree-collections-title">
+        <h2 id="saree-collections-title" class="collection-title">Saree Collections</h2>
+        <div class="swiper collection-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <article class="collection-card">
+                        <div class="collection-image-wrap">
+                            <img src="{{ asset('images/Image.png') }}" alt="Pure Silk Saree" />
+                        </div>
+                        <h3 class="collection-name">Pure Silk Saree</h3>
+                        <button class="collection-cta" type="button"
+                            onclick="window.location.href='{{ url('sarees') }}'">Shop
+                            Now</button>
+                    </article>
+                </div>
+
+                <div class="swiper-slide">
+                    <article class="collection-card">
+                        <div class="collection-image-wrap">
+                            <img src="{{ asset('images/Image (1).png') }}" alt="Tissue Silk Saree" />
+                        </div>
+                        <h3 class="collection-name">Tissue Silk Saree</h3>
+                        <button class="collection-cta" type="button"
+                            onclick="window.location.href='{{ url('sarees') }}'">Shop
+                            Now</button>
+                    </article>
+                </div>
+
+                <div class="swiper-slide">
+                    <article class="collection-card">
+                        <div class="collection-image-wrap">
+                            <img src="{{ asset('images/Image (2).png') }}" alt="Cotton Sarees" />
+                        </div>
+                        <h3 class="collection-name">Cotton Sarees</h3>
+                        <button class="collection-cta" type="button"
+                            onclick="window.location.href='{{ url('sarees') }}'">Shop
+                            Now</button>
+                    </article>
+                </div>
+
+                <div class="swiper-slide">
+                    <article class="collection-card">
+                        <div class="collection-image-wrap">
+                            <img src="{{ asset('images/Image (3).png') }}" alt="Soft Silk Saree" />
+                        </div>
+                        <h3 class="collection-name">Soft Silk Saree</h3>
+                        <button class="collection-cta" type="button"
+                            onclick="window.location.href='{{ url('sarees') }}'">Shop
+                            Now</button>
+                    </article>
+                </div>
+
+                <div class="swiper-slide">
+                    <article class="collection-card">
+                        <div class="collection-image-wrap">
+                            <img src="{{ asset('images/Image (4).png') }}" alt="Banarasi Silk Saree" />
+                        </div>
+                        <h3 class="collection-name">Banarasi Silk Saree</h3>
+                        <button class="collection-cta" type="button"
+                            onclick="window.location.href='{{ url('sarees') }}'">Shop
+                            Now</button>
+                    </article>
+                </div>
+            </div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next collection-next"></div>
+            <div class="swiper-button-prev collection-prev"></div>
+            <div class="swiper-scrollbar collection-scrollbar"></div>
+        </div>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featured-title">
+        <img class="featured-decor featured-decor-left"
+            src="{{ asset('images/177ac6ca-e05e-455e-b85a-ac15d09dd31f 2.png') }}" alt="" />
+        <img class="featured-decor featured-decor-right"
+            src="{{ asset('images/177ac6ca-e05e-455e-b85a-ac15d09dd31f 1.png') }}" alt="" />
+
+        <div class="featured-inner">
+            <h2 id="featured-title" class="featured-title">New Arrivals</h2>
+            <p class="featured-subtitle">Fresh weaves, added daily - discover sarees handwoven just for you</p>
+
+            <div class="featured-swiper-container" style="position: relative;">
+                <div class="swiper featured-swiper">
+                    <div class="swiper-wrapper">
+                        @foreach ($featuredProducts as $product)
+                            <div class="swiper-slide">
+                                <article class="featured-card">
+                                    <div class="featured-media">
+                                        @php
+                                            $fallbackImage = 'images/pro' . ($loop->index % 4 > 0 ? $loop->index % 4 : '') . '.png';
+                                            if ($loop->index % 4 == 0) {
+                                                $fallbackImage = 'images/pro3.png';
+                                            }
+                                            if ($loop->index % 4 == 1) {
+                                                $fallbackImage = 'images/pro2.png';
+                                            }
+                                            if ($loop->index % 4 == 2) {
+                                                $fallbackImage = 'images/pro1.png';
+                                            }
+                                            if ($loop->index % 4 == 3) {
+                                                $fallbackImage = 'images/pro.png';
+                                            }
+                                        @endphp
+                                        <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset($fallbackImage) }}"
+                                            alt="{{ $product->name }}" />
+                                        @if ($loop->index % 4 == 0)
+                                            <span class="featured-badge">New Arrival</span>
+                                        @elseif($loop->index % 4 == 1)
+                                            <span class="featured-badge">10% Off</span>
+                                        @elseif($loop->index % 4 == 3)
+                                            <span class="featured-badge">Hot Deal</span>
+                                        @endif
+                                    </div>
+                                    <h3 class="featured-name">{{ $product->name }}</h3>
+                                    <div class="featured-footer">
+                                        <span class="featured-price">&#8377; {{ number_format($product->price, 0) }}
+                                            INR</span>
+                                        <button class="featured-cart" type="button"
+                                            aria-label="Add {{ $product->name }} to cart">
+                                            <img src="{{ asset('images/Vector.svg') }}" alt="" />
+                                        </button>
+                                    </div>
+                                </article>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <!-- Add Navigation Outside Swiper -->
+                <div class="swiper-button-next featured-next"></div>
+                <div class="swiper-button-prev featured-prev"></div>
+            </div>
+
+            <div class="featured-progress" id="featuredProgress">
+                <span id="currentSlide">01</span>
+                <div class="featured-progress-track" id="progressTrack">
+                    <div class="featured-progress-bg"></div>
+                    <div class="featured-progress-fill" id="progressFill"></div>
+                </div>
+                <span>{{ sprintf('%02d', count($featuredProducts)) }}</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="category-section" aria-labelledby="browse-categories-title">
+        <h2 id="browse-categories-title" class="category-title">Browse Our Categories</h2>
+        <div class="swiper category-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('women') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image" src="{{ asset('images/Rectangle 9.png') }}"
+                                    alt="Sarees" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Sarees</h3>
+                        </article>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('mens') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image" src="{{ asset('images/Rectangle 9 (1).png') }}"
+                                    alt="Shirts" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Shirts</h3>
+                        </article>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('kids') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image" src="{{ asset('images/Rectangle 9 (2).png') }}"
+                                    alt="Girl" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Girl</h3>
+                        </article>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('kids') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image" src="{{ asset('images/Rectangle 9 (3).png') }}"
+                                    alt="Boy" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Boy</h3>
+                        </article>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('kids') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image" src="{{ asset('images/Rectangle 9 (4).png') }}"
+                                    alt="Half Saree" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Half Saree</h3>
+                        </article>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a class="category-link" href="{{ url('mens') }}" style="text-decoration: none;">
+                        <article class="category-card">
+                            <div class="category-image-shell">
+                                <img class="category-image category-image--dhoti"
+                                    src="{{ asset('images/Rectangle 9 (5).png') }}" alt="Dhoti" />
+                                <span class="category-ring"></span>
+                            </div>
+                            <h3 class="category-name">Dhoti</h3>
+                        </article>
+                    </a>
+                </div>
+            </div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next category-next"></div>
+            <div class="swiper-button-prev category-prev"></div>
+            <div class="swiper-scrollbar category-scrollbar"></div>
+        </div>
+    </section>
+
+    <section class="promo-section" aria-label="Promotions">
+        <article class="offer-card">
+            <div class="offer-image-wrap">
+                <img class="offer-image" src="{{ asset('images/Rectangle 31.png') }}" alt="Special Offer" />
+            </div>
+            <div class="offer-content">
+                <h2 class="offer-title">Up to 20% off, only for this month</h2>
+                <p class="offer-text">Shop now and enjoy up to 10% off on selected items. Limited time only!</p>
+                <a class="offer-link" href="{{ url('sarees') }}">
+                    <span>Shop Now</span>
+                    <span class="offer-link-arrow" aria-hidden="true">&#8594;</span>
+                </a>
+            </div>
+        </article>
+
+        <article class="wedding-card">
+            <div class="wedding-image-wrap">
+                <img class="wedding-image" src="{{ asset('images/image 2.png') }}" alt="Wedding collections" />
+            </div>
+            <div class="wedding-content">
+                <svg class="wedding-heading-svg" viewBox="0 0 1000 500">
+                    <defs>
+                        <linearGradient id="textFill" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#A91B43" />
+                            <stop offset="105%" stop-color="#F2A329" />
+                        </linearGradient>
+                        <radialGradient id="strokeGradient" cx="50%" cy="50%" r="40%">
+                            <stop offset="0%" stop-color="#A91B43" />
+                            <stop offset="50%" stop-color="#EF9F29" />
+                            <stop offset="80%" stop-color="#A91B43" />
+                        </radialGradient>
+                    </defs>
+                    <text x="0" y="180" text-anchor="start" fill="url(#textFill)" stroke="url(#strokeGradient)"
+                        stroke-width="3" paint-order="stroke">
+                        Wedding
+                    </text>
+                    <text x="0" y="400" text-anchor="start" fill="url(#textFill)" stroke="url(#strokeGradient)"
+                        stroke-width="3" paint-order="stroke">
+                        Collections
+                    </text>
+                </svg>
+                <p class="wedding-text">Flamboyantly charming, the Scarlet Satin Delight Saree embodies grandeur and
+                    romance. Rendered in a vivacious shade of red.</p>
+                <button class="wedding-cta" type="button" onclick="window.location.href='{{ url('sarees') }}'">Shop
+                    Now</button>
+            </div>
+        </article>
+    </section>
+
+    <section class="testimonial-section" aria-labelledby="testimonial-title">
+        <p class="testimonial-kicker">Testimonial</p>
+        <h2 id="testimonial-title" class="testimonial-title">Speaking from their hearts</h2>
+        <div class="testimonial-vector-wrap">
+            <img class="testimonial-vector" src="{{ asset('images/Vector2.svg') }}" alt="Quote icon" />
+        </div>
+
+        <div class="swiper testimonial-swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <article class="testimonial-card">
+                        <h3 class="testimonial-card-title">Beautiful elegant <br>saree</h3>
+                        <p class="testimonial-text">I recently ordered this saree online, and I am extremely happy with my
+                            purchase. The saree looked exactly like the pictures shown on the website. The color was
+                            vibrant,
+                            and the fabric quality was even better than I expected.</p>
+                        <p class="testimonial-name">Ramya</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="testimonial-card">
+                        <h3 class="testimonial-card-title">Stunning Design <br>& Quality</h3>
+                        <p class="testimonial-text">The craftsmanship is truly exceptional. I wore it for a wedding and
+                            received so many compliments. The delivery was prompt and the packaging was premium. Highly
+                            recommend Nandhini Silks!</p>
+                        <p class="testimonial-name">Priya</p>
+                    </article>
+                </div>
+                <div class="swiper-slide">
+                    <article class="testimonial-card">
+                        <h3 class="testimonial-card-title">Perfect for <br>Occasions</h3>
+                        <p class="testimonial-text">Finding authentic silk sarees online can be tricky, but this was a
+                            great experience. The texture is soft and the pallu design is intricate. Will definitely buy
+                            more in the future.</p>
+                        <p class="testimonial-name">Deepika</p>
+                    </article>
+                </div>
+            </div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next testimonial-next"></div>
+            <div class="swiper-button-prev testimonial-prev"></div>
+            <div class="swiper-scrollbar testimonial-scrollbar"></div>
+        </div>
+    </section>
+
+    @push('scripts')
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Initialize Swiper for each section
+                new Swiper('.hero-swiper', {
+                    slidesPerView: 1,
+                    loop: true,
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.hero-next',
+                        prevEl: '.hero-prev',
+                    },
+                    pagination: {
+                        el: '.hero-pagination',
+                        clickable: true,
+                    }
+                });
+
+                new Swiper('.collection-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                    loop: true,
+                    freeMode: {
+                        enabled: true,
+                        momentumRatio: 0.35,
+                    },
+                    autoplay: {
+                        delay: 3000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.collection-next',
+                        prevEl: '.collection-prev',
+                    },
+                    scrollbar: {
+                        el: '.collection-scrollbar',
+                        draggable: true,
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                        1024: { slidesPerView: 4 },
+                        1280: { slidesPerView: 5 },
+                    }
+                });
+
+                const featuredSwiper = new Swiper('.featured-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 18,
+                    loop: true, // Continuous scroll
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.featured-next',
+                        prevEl: '.featured-prev',
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 2 },
+                        768: { slidesPerView: 3 },
+                        1024: { slidesPerView: 4 },
+                    },
+                    on: {
+                        init: function () {
+                            updateProgressBar(this);
+                        },
+                        slideChange: function () {
+                            updateProgressBar(this);
+                        },
+                        resize: function () {
+                            updateProgressBar(this);
+                        }
+                    }
+                });
+
+                function getFeaturedProductCount(swiper) {
+                    return swiper.slides.filter(slide => !slide.classList.contains('swiper-slide-duplicate')).length;
+                }
+
+                function updateProgressBar(swiper) {
+                    const progressFill = document.getElementById('progressFill');
+                    const currentSlide = document.getElementById('currentSlide');
+
+                    if (!progressFill || !currentSlide) return;
+
+                    const totalProducts = getFeaturedProductCount(swiper);
+                    const currentIndex = Math.min(swiper.realIndex, Math.max(totalProducts - 1, 0));
+                    const progress = totalProducts <= 1 ? 100 : (currentIndex / (totalProducts - 1)) * 100;
+
+                    progressFill.style.width = `${Math.min(Math.max(progress, 0), 100)}%`;
+                    currentSlide.textContent = String(currentIndex + 1).padStart(2, '0');
+                }
+
+                function seekFeaturedProducts(event) {
+                    const progressTrack = document.getElementById('progressTrack');
+                    if (!progressTrack) return;
+
+                    const rect = progressTrack.getBoundingClientRect();
+                    const clickOffset = Math.min(Math.max(event.clientX - rect.left, 0), rect.width);
+                    const clickRatio = rect.width === 0 ? 0 : clickOffset / rect.width;
+                    const totalProducts = getFeaturedProductCount(featuredSwiper);
+                    const targetIndex = totalProducts <= 1 ? 0 : Math.round(clickRatio * (totalProducts - 1));
+
+                    featuredSwiper.slideToLoop(targetIndex);
+                }
+
+                const progressTrack = document.getElementById('progressTrack');
+                if (progressTrack) {
+                    progressTrack.style.cursor = 'pointer';
+                    progressTrack.addEventListener('click', seekFeaturedProducts);
+                }
+
+
+                new Swiper('.category-swiper', {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                    loop: true,
+                    freeMode: {
+                        enabled: true,
+                        momentumRatio: 0.35,
+                    },
+                    autoplay: {
+                        delay: 4000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.category-next',
+                        prevEl: '.category-prev',
+                    },
+                    scrollbar: {
+                        el: '.category-scrollbar',
+                        draggable: true,
+                    },
+                    breakpoints: {
+                        480: { slidesPerView: 3 },
+                        768: { slidesPerView: 4 },
+                        1024: { slidesPerView: 5 },
+                        1280: { slidesPerView: 6 },
+                    }
+                });
+
+                new Swiper('.testimonial-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 30,
+                    loop: true,
+                    freeMode: {
+                        enabled: true,
+                        momentumRatio: 0.35,
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.testimonial-next',
+                        prevEl: '.testimonial-prev',
+                    },
+                    scrollbar: {
+                        el: '.testimonial-scrollbar',
+                        draggable: true,
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 },
+                    }
+                });
+            });
+        </script>
+    @endpush
+@endsection
