@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Http\Controllers\ProductController;
 
 Route::get('/', [ProductController::class, 'index']);
@@ -34,6 +35,18 @@ Route::get('/wishlist', function () {
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
+/* ---------- ADD THESE TWO ROUTES ---------- */
+
+Route::post('/login', function (Request $request) {
+    return back()->with('success', 'Login request received');
+})->name('login.submit');
+
+Route::post('/register', function (Request $request) {
+    return back()->with('success', 'Register request received');
+})->name('register');
+
+/* ------------------------------------------ */
 
 Route::get('/search', function () {
     return view('search');

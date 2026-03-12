@@ -376,33 +376,35 @@
                         @foreach ($featuredProducts as $product)
                             <div class="swiper-slide">
                                 <article class="featured-card">
-                                    <div class="featured-media">
-                                        @php
-                                            $fallbackImage = 'images/pro' . ($loop->index % 4 > 0 ? $loop->index % 4 : '') . '.png';
-                                            if ($loop->index % 4 == 0) {
-                                                $fallbackImage = 'images/pro3.png';
-                                            }
-                                            if ($loop->index % 4 == 1) {
-                                                $fallbackImage = 'images/pro2.png';
-                                            }
-                                            if ($loop->index % 4 == 2) {
-                                                $fallbackImage = 'images/pro1.png';
-                                            }
-                                            if ($loop->index % 4 == 3) {
-                                                $fallbackImage = 'images/pro.png';
-                                            }
-                                        @endphp
-                                        <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset($fallbackImage) }}"
-                                            alt="{{ $product->name }}" />
-                                        @if ($loop->index % 4 == 0)
-                                            <span class="featured-badge">New Arrival</span>
-                                        @elseif($loop->index % 4 == 1)
-                                            <span class="featured-badge">10% Off</span>
-                                        @elseif($loop->index % 4 == 3)
-                                            <span class="featured-badge">Hot Deal</span>
-                                        @endif
-                                    </div>
-                                    <h3 class="featured-name">{{ $product->name }}</h3>
+                                    <a href="{{ route('product.show', $product->slug) }}" style="text-decoration: none; color: inherit;">
+                                        <div class="featured-media">
+                                            @php
+                                                $fallbackImage = 'images/pro' . ($loop->index % 4 > 0 ? $loop->index % 4 : '') . '.png';
+                                                if ($loop->index % 4 == 0) {
+                                                    $fallbackImage = 'images/pro3.png';
+                                                }
+                                                if ($loop->index % 4 == 1) {
+                                                    $fallbackImage = 'images/pro2.png';
+                                                }
+                                                if ($loop->index % 4 == 2) {
+                                                    $fallbackImage = 'images/pro1.png';
+                                                }
+                                                if ($loop->index % 4 == 3) {
+                                                    $fallbackImage = 'images/pro.png';
+                                                }
+                                            @endphp
+                                            <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset($fallbackImage) }}"
+                                                alt="{{ $product->name }}" />
+                                            @if ($loop->index % 4 == 0)
+                                                <span class="featured-badge">New Arrival</span>
+                                            @elseif($loop->index % 4 == 1)
+                                                <span class="featured-badge">10% Off</span>
+                                            @elseif($loop->index % 4 == 3)
+                                                <span class="featured-badge">Hot Deal</span>
+                                            @endif
+                                        </div>
+                                        <h3 class="featured-name">{{ $product->name }}</h3>
+                                    </a>
                                     <div class="featured-footer">
                                         <span class="featured-price">&#8377; {{ number_format($product->price, 0) }}
                                             INR</span>
