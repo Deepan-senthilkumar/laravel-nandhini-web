@@ -522,6 +522,7 @@
                         @foreach ($featuredProducts as $product)
                             <div class="swiper-slide">
                                 <article class="featured-card">
+                                    <a href="{{ route('product.show', $product->slug) }}" style="text-decoration: none; color: inherit;">
                                     <a href="{{ route('product.show', $product->slug) }}" class="card-link-wrapper">
                                         <div class="featured-media">
                                             @php

@@ -17,7 +17,7 @@
                 </div>
 
                 <!-- Login Form -->
-                <form id="loginForm" class="auth-form" method="POST" action="{{ route('login') }}">
+                <form id="loginForm" class="auth-form" method="POST" action="{{ route('login.submit') }}">
                     @csrf
                     <div class="form-group" id="loginEmailGroup">
                         <label class="form-label" for="loginEmail">Email Address</label>
@@ -41,8 +41,7 @@
                 </form>
 
                 <!-- Register Form (Hidden by default) -->
-                <form id="registerForm" class="auth-form" style="display: none;" method="POST"
-                    action="{{ route('register') }}">
+                <form id="registerForm" class="auth-form" style="display: none;" method="POST" action="{{ route('register') }}">
                     @csrf
                     <div class="form-group">
                         <label class="form-label" for="regName">Full Name</label>
@@ -68,6 +67,12 @@
                         <label class="form-label" for="regConfirm">Confirm Password</label>
                         <input class="form-input" type="password" id="regConfirm" name="password_confirmation"
                             placeholder="Confirm your password" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="remember-me" style="display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" name="terms" required checked> I agree to the <a href="{{ url('terms-conditions') }}" style="color: var(--pink);">Terms and Conditions</a>
+                        </label>
                     </div>
 
                     <button type="submit" class="auth-submit">Register</button>
