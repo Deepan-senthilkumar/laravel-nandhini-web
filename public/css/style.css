@@ -32,7 +32,7 @@ body {
   grid-template-areas: "search logo actions";
   align-items: center;
   gap: 32px;
-  padding: 14px 0;
+  padding: 0;
 }
 
 .brand-link {
@@ -467,7 +467,7 @@ body {
   left: 0;
   bottom: 0px;
   transform: rotate(180deg);
-  top: 380px;
+  top: 340px;
 }
 
 .featured-decor-right {
@@ -487,6 +487,7 @@ body {
 
 .featured-subtitle {
   margin: 10px 0 0;
+  padding-bottom: 35px;
   color: #4d4217;
   font-size: 14px;
   font-weight: 300;
@@ -1247,7 +1248,8 @@ body {
   .brand {
     grid-area: logo;
     margin: 0;
-    width: 150px;
+    width: 130px;
+    height: auto;
     justify-self: start;
   }
 
@@ -1762,8 +1764,14 @@ body {
   }
 
   .login-btn {
-    padding: 0 12px;
-    font-size: 12px;
+    padding: 0 10px;
+    font-size: 11px;
+    height: 34px;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
   }
 
   .hero-swiper .swiper-slide img {
