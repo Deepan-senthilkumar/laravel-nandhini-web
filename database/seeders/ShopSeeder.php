@@ -31,6 +31,7 @@ class ShopSeeder extends Seeder
                     ['name' => 'Royal Gold Handloom Silk', 'price' => 7490, 'stock' => 10, 'image' => 'saree_royal_gold_handloom_silk_1773214820441.png'],
                     ['name' => 'Classic Red Kanchipuram', 'price' => 4290, 'stock' => 15, 'image' => 'saree_classic_red_kanchipuram_1773214836721.png'],
                     ['name' => 'Elegant Pink Tissue Saree', 'price' => 9990, 'stock' => 5, 'image' => 'pro3.png'],
+                    ['name' => 'Exquisite Silk Saree', 'price' => 4999, 'stock' => 8, 'image' => 'product1_1.jpg'],
                 ];
             } elseif ($cat['name'] === 'Women') {
                 $products = [
