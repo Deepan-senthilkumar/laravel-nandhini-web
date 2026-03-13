@@ -1,14 +1,14 @@
 #!/bin/bash
 set -e
 
-# Run migrations
-echo "Running migrations..."
-php artisan migrate --force
+# Run migrations (Commented out for frontend-only demo)
+# echo "Running migrations..."
+# php artisan migrate --force
 
-# Seed database
-echo "Seeding database..."
-php artisan db:seed --force
+# Seed database (Commented out for frontend-only demo)
+# echo "Seeding database..."
+# php artisan db:seed --force
 
 # Start Apache
-echo "Starting Apache..."
+echo "Starting Apache (Frontend Only Mode)..."
 exec apache2-foreground
