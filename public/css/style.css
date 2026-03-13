@@ -265,20 +265,28 @@ body {
 .menu-toggle {
   display: none;
   flex-direction: column;
-  gap: 5px;
-  background: transparent;
-  border: none;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(4px);
+  border-radius: 50%;
   cursor: pointer;
-  padding: 10px;
+  padding: 12px;
+  width: 46px;
+  height: 46px;
+  align-items: center;
+  justify-content: center;
   z-index: 1001;
+  transition: all 0.3s ease;
 }
 
 .hamburger-bar {
   display: block;
-  width: 25px;
+  width: 20px;
   height: 2px;
   background-color: #ffffff;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 2px;
 }
 
 .hero {
@@ -1695,14 +1703,19 @@ body {
   }
 
   /* Hamburger Animation */
+  .menu-toggle.active {
+    background: transparent;
+    border-color: transparent;
+    backdrop-filter: none;
+  }
   .menu-toggle.active .hamburger-bar:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(8px) rotate(45deg);
   }
   .menu-toggle.active .hamburger-bar:nth-child(2) {
     opacity: 0;
   }
   .menu-toggle.active .hamburger-bar:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
   }
 
   @keyframes scroll-collections-mobile {
