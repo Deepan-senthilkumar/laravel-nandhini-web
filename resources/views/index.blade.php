@@ -265,10 +265,10 @@
 
         @media (max-width: 768px) {
             .hero {
-                margin-bottom: 24px;
+                margin-bottom: 20px;
             }
 
-            /* Reduced button size for all sections on mobile */
+            /* ── Nav buttons: smaller on mobile ── */
             .collection-next,
             .collection-prev,
             .category-next,
@@ -279,8 +279,8 @@
             .featured-prev,
             .hero-next,
             .hero-prev {
-                width: 34px !important;
-                height: 34px !important;
+                width: 32px !important;
+                height: 32px !important;
             }
 
             .collection-next::after,
@@ -293,115 +293,219 @@
             .featured-prev::after,
             .hero-next::after,
             .hero-prev::after {
-                font-size: 14px !important;
+                font-size: 13px !important;
             }
 
+            /* ── Section spacing ── */
+            /* ── Global Section Padding (Mobile) ── */
             .collection-section,
-            .category-section,
-            .promo-section,
-            .testimonial-section,
-            .featured-inner {
-                padding-left: 10px;
-                padding-right: 10px;
+            .category-section {
+                padding-left: 45px !important;
+                padding-right: 45px !important;
+                margin-bottom: 30px;
             }
 
-            .collection-section,
-            .featured-section,
-            .category-section,
+            .featured-inner,
             .promo-section,
             .testimonial-section {
-                margin-bottom: 36px;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                margin-bottom: 30px;
+            }
+
+            /* ── Special case for featured-inner which is already a sub-container ── */
+            .featured-section {
+                margin-bottom: 30px;
+            }
+
+            /* Nav buttons sit on the left/right edge of the section padding area */
+            .collection-prev {
+                left: -35px;
+                top: 40%;
+            }
+
+            .collection-next {
+                right: -35px;
+                top: 40%;
+            }
+
+            /* No inner swiper padding — full width of padded container */
+            .collection-swiper {
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .collection-card,
+            .featured-card {
+                align-items: center !important;
+                text-align: center !important;
             }
 
             .collection-name,
             .featured-name {
                 min-height: auto;
-                font-size: 16px;
-                margin-top: 10px;
+                font-size: 15px;
+                margin-top: 12px !important;
+                margin-bottom: 12px !important;
+                width: 100%;
             }
 
+            .collection-cta,
+            .featured-footer {
+                position: static !important;
+                margin-top: 8px !important;
+                align-self: center !important;
+            }
+
+            /* ── Featured / New Arrivals section ── */
             .featured-title {
-                font-size: 24px !important;
+                font-size: 22px !important;
             }
 
             .featured-subtitle {
                 font-size: 13px !important;
-                padding-bottom: 20px !important;
+                padding-bottom: 16px !important;
             }
 
             .featured-swiper-container {
-                margin-top: 18px;
+                margin-top: 14px;
+            }
+
+            /* Section gets its own side padding; swiper fills the full padded container */
+            .featured-inner {
+                padding-left: 40px !important;
+                padding-right: 40px !important;
             }
 
             .featured-swiper {
-                padding-left: 45px;
-                padding-right: 45px;
+                padding-left: 0;
+                padding-right: 0;
             }
 
+            /* Nav buttons on edge of padded area */
             .featured-prev {
-                left: 5px;
-                top: 38%;
+                left: -35px;
+                top: 40%;
             }
 
             .featured-next {
-                right: 5px;
-                top: 38%;
+                right: -35px;
+                top: 40%;
             }
 
-            .collection-swiper {
-                padding-left: 45px;
-                padding-right: 45px;
+            /* Hide decorative flourish images on mobile — they overflow */
+            .featured-decor {
+                display: none !important;
             }
+
+            /* Handled in global section padding block */
 
             .category-swiper {
-                padding-left: 28px;
-                padding-right: 28px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+
+            .category-card {
+                align-items: center !important;
+                text-align: center !important;
+                padding-bottom: 5px;
+            }
+
+            .category-image-shell {
+                width: 100px !important;
+                height: 100px !important;
+                margin: 0 auto !important;
+            }
+
+            .category-name {
+                font-size: 13px !important;
+                margin-top: 8px !important;
             }
 
             .category-prev {
-                left: -4px;
-                top: 42%;
+                left: -35px;
+                top: 45%;
             }
 
             .category-next {
-                right: -4px;
-                top: 42%;
+                right: -35px;
+                top: 45%;
             }
 
-            .collection-prev {
-                left: 5px;
-                top: 38%;
+            /* ── Promo section (Offer & Wedding) ── */
+            .promo-section {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                gap: 24px !important;
             }
 
-            .collection-next {
-                right: 5px;
-                top: 38%;
+            .offer-card,
+            .wedding-card {
+                display: flex !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                min-height: auto !important;
             }
 
+            .offer-image-wrap,
+            .wedding-image-wrap {
+                position: static !important;
+                width: 100% !important;
+                height: 200px !important;
+            }
+
+            .offer-content,
+            .wedding-content {
+                width: 100% !important;
+                padding: 24px 15px !important;
+                align-items: center !important;
+            }
+
+            .offer-title,
+            .offer-text,
+            .wedding-text {
+                max-width: 100% !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+
+            .wedding-heading-svg {
+                width: 180px !important;
+                height: auto !important;
+                margin: 0 auto 10px !important;
+            }
+
+            .offer-link,
+            .wedding-cta {
+                align-self: center !important;
+                margin-top: 10px !important;
+            }
             .testimonial-swiper {
-                padding-left: 28px;
-                padding-right: 28px;
+                padding-left: 0;
+                padding-right: 0;
             }
 
             .testimonial-card {
                 min-height: auto;
-                padding: 22px 20px 20px;
-            }
-
-            .testimonial-text {
-                font-size: 15px;
+                padding: 24px 20px;
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
             }
 
             .testimonial-prev {
-                left: -4px;
-                top: 42%;
+                left: 2px;
+                top: 50%;
+                z-index: 1001;
             }
 
             .testimonial-next {
-                right: -4px;
-                top: 42%;
+                right: 2px;
+                top: 50%;
+                z-index: 1001;
             }
-
         }
     </style>
 @endpush
@@ -680,63 +784,36 @@
         <div class="testimonial-swiper-wrap">
             <div class="swiper testimonial-swiper">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Beautiful elegant <br>saree</h3>
-                            <p class="testimonial-text">I recently ordered this saree online, and I am extremely happy with my
-                                purchase. The saree looked exactly like the pictures shown on the website. The color was
-                                vibrant,
-                                and the fabric quality was even better than I expected.</p>
-                            <p class="testimonial-name">Ramya</p>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Stunning Design <br>& Quality</h3>
-                            <p class="testimonial-text">The craftsmanship is truly exceptional. I wore it for a wedding and
-                                received so many compliments. The delivery was prompt and the packaging was premium. Highly
-                                recommend Nandhini Silks!</p>
-                            <p class="testimonial-name">Priya</p>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Perfect for <br>Occasions</h3>
-                            <p class="testimonial-text">Finding authentic silk sarees online can be tricky, but this was a
-                                great experience. The texture is soft and the pallu design is intricate. Will definitely buy
-                                more in the future.</p>
-                            <p class="testimonial-name">Deepika</p>
-                        </article>
-                    </div>
-                    <!-- Duplicated slides for smoother auto-scroll loop -->
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Beautiful elegant <br>saree</h3>
-                            <p class="testimonial-text">I recently ordered this saree online, and I am extremely happy with my
-                                purchase. The saree looked exactly like the pictures shown on the website. The color was
-                                vibrant,
-                                and the fabric quality was even better than I expected.</p>
-                            <p class="testimonial-name">Ramya</p>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Stunning Design <br>& Quality</h3>
-                            <p class="testimonial-text">The craftsmanship is truly exceptional. I wore it for a wedding and
-                                received so many compliments. The delivery was prompt and the packaging was premium. Highly
-                                recommend Nandhini Silks!</p>
-                            <p class="testimonial-name">Priya</p>
-                        </article>
-                    </div>
-                    <div class="swiper-slide">
-                        <article class="testimonial-card">
-                            <h3 class="testimonial-card-title">Perfect for <br>Occasions</h3>
-                            <p class="testimonial-text">Finding authentic silk sarees online can be tricky, but this was a
-                                great experience. The texture is soft and the pallu design is intricate. Will definitely buy
-                                more in the future.</p>
-                            <p class="testimonial-name">Deepika</p>
-                        </article>
-                    </div>
+                    @for ($copy = 0; $copy < 2; $copy++)
+                        <div class="swiper-slide" @if ($copy === 1) aria-hidden="true" tabindex="-1" @endif>
+                            <article class="testimonial-card">
+                                <h3 class="testimonial-card-title">Beautiful elegant <br>saree</h3>
+                                <p class="testimonial-text">I recently ordered this saree online, and I am extremely happy with my
+                                    purchase. The saree looked exactly like the pictures shown on the website. The color was
+                                    vibrant,
+                                    and the fabric quality was even better than I expected.</p>
+                                <p class="testimonial-name">Ramya</p>
+                            </article>
+                        </div>
+                        <div class="swiper-slide" @if ($copy === 1) aria-hidden="true" tabindex="-1" @endif>
+                            <article class="testimonial-card">
+                                <h3 class="testimonial-card-title">Stunning Design <br>& Quality</h3>
+                                <p class="testimonial-text">The craftsmanship is truly exceptional. I wore it for a wedding and
+                                    received so many compliments. The delivery was prompt and the packaging was premium. Highly
+                                    recommend Nandhini Silks!</p>
+                                <p class="testimonial-name">Priya</p>
+                            </article>
+                        </div>
+                        <div class="swiper-slide" @if ($copy === 1) aria-hidden="true" tabindex="-1" @endif>
+                            <article class="testimonial-card">
+                                <h3 class="testimonial-card-title">Perfect for <br>Occasions</h3>
+                                <p class="testimonial-text">Finding authentic silk sarees online can be tricky, but this was a
+                                    great experience. The texture is soft and the pallu design is intricate. Will definitely buy
+                                    more in the future.</p>
+                                <p class="testimonial-name">Deepika</p>
+                            </article>
+                        </div>
+                    @endfor
                 </div>
             </div>
             <!-- Navigation outside swiper for correct button positioning -->
@@ -768,6 +845,7 @@
 
                 new Swiper('.collection-swiper', {
                     slidesPerView: 1,
+                    slidesPerGroup: 1,
                     spaceBetween: 10,
                     loop: true,
                     watchOverflow: false,
@@ -787,10 +865,49 @@
                     }
                 });
 
+                new Swiper('.category-swiper', {
+                    slidesPerView: 3,
+                    spaceBetween: 8, // Reduced spacing for categories
+                    loop: true,
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.category-next',
+                        prevEl: '.category-prev',
+                    },
+                    breakpoints: {
+                        640: { slidesPerView: 3, spaceBetween: 12 },
+                        768: { slidesPerView: 4, spaceBetween: 15 },
+                        1024: { slidesPerView: 5, spaceBetween: 20 },
+                        1280: { slidesPerView: 6, spaceBetween: 24 },
+                    }
+                });
+
+                new Swiper('.testimonial-swiper', {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                    loop: true,
+                    centeredSlides: true,
+                    watchOverflow: false,
+                    autoplay: {
+                        delay: 3500,
+                        disableOnInteraction: false,
+                    },
+                    navigation: {
+                        nextEl: '.testimonial-next',
+                        prevEl: '.testimonial-prev',
+                    },
+                    breakpoints: {
+                        768: { slidesPerView: 2, spaceBetween: 30 },
+                        1024: { slidesPerView: 3, spaceBetween: 40 },
+                    }
+                });
                 const featuredSwiper = new Swiper('.featured-swiper', {
                     slidesPerView: 1,
                     spaceBetween: 18,
-                    loop: true, // Continuous scroll
+                    loop: true,
                     autoplay: {
                         delay: 3500,
                         disableOnInteraction: false,
@@ -856,12 +973,9 @@
 
                 new Swiper('.category-swiper', {
                     slidesPerView: 2,
-                    spaceBetween: 20,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10,
                     loop: true,
-                    freeMode: {
-                        enabled: true,
-                        momentumRatio: 0.35,
-                    },
                     watchOverflow: false,
                     autoplay: {
                         delay: 4000,
@@ -872,10 +986,10 @@
                         prevEl: '.category-prev',
                     },
                     breakpoints: {
-                        480: { slidesPerView: 3 },
-                        768: { slidesPerView: 4 },
-                        1024: { slidesPerView: 5 },
-                        1280: { slidesPerView: 6 },
+                        640: { slidesPerView: 3, spaceBetween: 12 },
+                        768: { slidesPerView: 4, spaceBetween: 15 },
+                        1024: { slidesPerView: 5, spaceBetween: 20 },
+                        1280: { slidesPerView: 6, spaceBetween: 24 },
                     }
                 });
 

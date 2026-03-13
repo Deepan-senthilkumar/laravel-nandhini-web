@@ -135,9 +135,12 @@
             dropdownToggles.forEach(toggle => {
                 toggle.addEventListener('click', (e) => {
                     if (window.innerWidth <= 768) {
-                        e.preventDefault();
                         const parent = toggle.parentElement;
-                        parent.classList.toggle('mobile-open');
+                        // Only prevent default if it has a dropdown
+                        if (parent.querySelector('.dropdown-content')) {
+                            e.preventDefault();
+                            parent.classList.toggle('mobile-open');
+                        }
                     }
                 });
             });

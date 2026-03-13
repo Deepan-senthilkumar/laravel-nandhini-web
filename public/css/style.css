@@ -1287,17 +1287,17 @@ body {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 250px;
+    width: 280px;
     height: 100vh;
     background: var(--pink);
     background: linear-gradient(180deg, var(--nav-start) 0%, var(--nav-end) 100%);
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 84px 24px 24px;
+    padding: 84px 0 24px; /* Removed side padding here to use it in items */
     gap: 0;
     transition: 0.3s ease-in-out;
-    z-index: 1000;
+    z-index: 3000; /* Increased to be above everything */
     box-shadow: -5px 0 15px rgba(0,0,0,0.2);
     overflow-y: auto;
   }
@@ -1309,7 +1309,16 @@ body {
   .nav-bar {
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 2000; /* Ensure sticky bar is above content */
+  }
+
+  .menu-toggle {
+    display: flex;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3001; /* Above the side menu */
   }
 
   .nav-item,
@@ -1320,15 +1329,21 @@ body {
 
   .nav-item {
     width: 100%;
-    padding: 14px 0;
+    padding: 14px 24px; /* Added horizontal padding */
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  /* Mobile Dropdown Styling */
+  .nav-item-wrapper.mobile-open > a {
+    background: rgba(0, 0, 0, 0.1);
+    font-weight: 700;
   }
 
   .dropdown-content,
   .child-dropdown {
     position: static;
     min-width: 100%;
-    padding: 0 0 0 14px;
+    padding: 0;
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1337,33 +1352,53 @@ body {
     transform: none;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.25s ease;
+    transition: max-height 0.3s ease;
   }
 
   .nav-item-wrapper.mobile-open > .dropdown-content,
   .has-children.mobile-open > .child-dropdown {
-    max-height: 500px;
-    padding-bottom: 8px;
+    max-height: 800px;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .dropdown-content a {
+    padding: 12px 24px 12px 40px !important; /* Indent level 1 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .has-children.mobile-open > a {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .child-dropdown a {
+    padding: 10px 24px 10px 56px !important; /* Indent level 2 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-item::after,
+  .has-children > a::after {
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-open > .nav-item::after,
+  .mobile-open.has-children > a::after {
+    transform: rotate(90deg);
   }
 
   .dropdown-content a,
   .child-dropdown a {
     color: #fff;
-    padding: 10px 0;
   }
 
-  .dropdown-content a:hover,
-  .child-dropdown a:hover {
-    background: transparent;
-    color: #fff4ca;
-  }
-
-  .child-dropdown {
-    padding-left: 16px;
+  /* Hero image height cap on mobile */
+  .hero-swiper .swiper-slide img {
+    max-height: 220px;
+    object-fit: cover;
+    width: 100%;
   }
 
   .collection-section {
-    margin: 30px 0;
+    margin: 20px 0;
     width: 100%;
     overflow: hidden;
   }
@@ -1570,84 +1605,69 @@ body {
     flex-shrink: 0;
   }
 
+  /* Hide decorative flourish images — they overflow on mobile */
   .featured-decor {
-    width: 25vw !important;
-    opacity: 0.5 !important;
+    display: none !important;
   }
-
-  .featured-decor-left {
-    top: auto !important;
-    bottom: 0 !important;
-  }
-
 
   .featured-inner {
     margin: 0 !important;
     width: 100% !important;
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+    box-sizing: border-box !important;
   }
 
   .featured-title {
-    font-size: 24px !important;
-    padding: 0 20px !important;
+    font-size: 22px !important;
     line-height: 1.2 !important;
   }
 
   .featured-subtitle {
-    font-size: 14px !important;
-    padding: 0 20px !important;
-    margin-bottom: 25px !important;
+    font-size: 13px !important;
+    margin-bottom: 16px !important;
   }
 
   .featured-section {
-    padding: 40px 0 !important;
+    padding: 30px 0 !important;
   }
 
   .promo-section {
-    grid-template-columns: 1fr;
-    margin: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    margin: 30px 0 !important;
+    padding: 0 !important; /* Managed by index.blade padding override */
+    width: 100% !important;
   }
 
   .wedding-card, .offer-card {
-    display: grid;
-    grid-template-columns: 1fr;
-    min-height: auto;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    min-height: auto !important;
+    width: 100% !important;
+    border-radius: 15px !important;
   }
 
   .wedding-image-wrap, .offer-image-wrap {
     position: relative !important;
     inset: auto !important;
     width: 100% !important;
-    height: 240px !important;
+    height: 250px !important;
   }
 
-  .wedding-image,
-  .offer-image {
-    object-position: top center !important;
-  }
-
-  .offer-content {
-    position: relative !important;
-    z-index: 1 !important;
+  .offer-content, .wedding-content {
+    width: 100% !important;
+    padding: 24px 20px !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: center !important;
-    align-items: flex-start !important;
-    width: 100% !important;
+    align-items: center !important;
+    text-align: center !important;
     min-height: auto !important;
-    margin-left: 0 !important;
-    padding: 24px 20px 28px !important;
-    gap: 12px !important;
-    text-align: left !important;
   }
 
-  .offer-title,
-  .offer-text {
-    max-width: none !important;
-  }
-
-  .offer-link {
-    align-self: flex-start;
-  }
 
 
   .footer-contact-grid {
@@ -1705,55 +1725,30 @@ body {
     100% { transform: translateX(-200vw); }
   }
 
+  /* Testimonial Alignment Fix */
   .testimonial-section {
-    margin: 30px 0 !important;
-    width: 100%;
-    overflow: hidden;
+    margin: 40px auto !important;
+    width: 100% !important;
   }
 
-  .testimonial-title, .testimonial-kicker {
-    padding: 0 20px;
+  .testimonial-swiper {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
   }
 
-  .testimonial-marquee {
-    gap: 0 !important;
-    margin-bottom: 40px !important;
-  }
-
-  .testimonial-grid {
-    display: flex !important;
-    width: max-content !important;
-    flex-shrink: 0 !important;
-    animation: scroll-testimonials-mobile 21s ease-in-out infinite !important;
-    gap: 16px !important;
-    padding: 0 0 0 16px !important;
-    box-sizing: border-box;
-  }
-
-  .testimonial-card {
-    flex: 0 0 calc(100vw - 32px) !important;
-    width: calc(100vw - 32px) !important;
-    margin: 0 !important;
-    border-radius: 15px !important;
-    padding: 20px 24px !important;
-    box-sizing: border-box;
-  }
-
-  @keyframes scroll-testimonials-mobile {
-    0%, 28.5% { transform: translateX(0); }
-    33.33%, 61.83% { transform: translateX(calc(-100vw + 16px)); }
-    66.66%, 95.16% { transform: translateX(calc(-200vw + 32px)); }
-    100% { transform: translateX(calc(-300vw + 48px)); }
-  }
 }
 
 
 @media (max-width: 480px) {
   .featured-card {
-    flex: 0 0 50vw !important;
-    width: 50vw !important;
+    flex: 0 0 80vw !important;
+    width: 80vw !important;
   }
 
+  .collection-card {
+    flex: 0 0 80vw !important;
+    width: 80vw !important;
+  }
 
   .brand {
     width: 75px;
@@ -1774,8 +1769,11 @@ body {
     height: 32px;
   }
 
+  /* Tighter hero image height on very small screens */
   .hero-swiper .swiper-slide img {
-    height: 230px;
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
   }
   
   .footer-inner {
@@ -4901,5 +4899,49 @@ input:checked + .toggle-switch .toggle-dot {
   .search-query-text,
   .category-main-title {
     font-size: 24px;
+  }
+}
+
+/* ── Back to Top Button ── */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background-color: #f3a349;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+  z-index: 9999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #d88b36;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
   }
 }
