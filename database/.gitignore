@@ -1,1 +1,8 @@
-*.sqlite*
+# ignore everything in this directory
+*
+# except this file
+!.gitkeep
+# and migrations/seeders/factories which are in their own subdirs
+!migrations/
+!seeders/
+!factories/

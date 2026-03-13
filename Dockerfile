@@ -41,13 +41,15 @@ RUN mkdir -p database && touch database/database.sqlite
 RUN php artisan migrate --force && php artisan db:seed --force
 
 # Set permissions required by Laravel
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 775 storage
-RUN chmod -R 775 bootstrap/cache
-RUN chmod -R 775 database
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
+
+# Make the start script executable
+RUN chmod +x /var/www/html/docker-start.sh
 
 # Expose Apache port
 EXPOSE 80
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Start with our custom script
+CMD ["/var/www/html/docker-start.sh"]
