@@ -867,7 +867,8 @@
 
                 new Swiper('.category-swiper', {
                     slidesPerView: 3,
-                    spaceBetween: 8, // Reduced spacing for categories
+                    slidesPerGroup: 1,
+                    spaceBetween: 8,
                     loop: true,
                     autoplay: {
                         delay: 3500,
@@ -971,46 +972,6 @@
                     progressTrack.addEventListener('click', seekFeaturedProducts);
                 }
 
-                new Swiper('.category-swiper', {
-                    slidesPerView: 2,
-                    slidesPerGroup: 1,
-                    spaceBetween: 10,
-                    loop: true,
-                    watchOverflow: false,
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.category-next',
-                        prevEl: '.category-prev',
-                    },
-                    breakpoints: {
-                        640: { slidesPerView: 3, spaceBetween: 12 },
-                        768: { slidesPerView: 4, spaceBetween: 15 },
-                        1024: { slidesPerView: 5, spaceBetween: 20 },
-                        1280: { slidesPerView: 6, spaceBetween: 24 },
-                    }
-                });
-
-                new Swiper('.testimonial-swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    loop: true,
-                    watchOverflow: false,
-                    autoplay: {
-                        delay: 3500,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.testimonial-next',
-                        prevEl: '.testimonial-prev',
-                    },
-                    breakpoints: {
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
-                    }
-                });
             });
         </script>
     @endpush
