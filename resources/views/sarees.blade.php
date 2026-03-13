@@ -28,12 +28,14 @@
                     </div>
 
                     <div class="filter-group">
-                        <h3 class="filter-title">Brand / Collection</h3>
+                        <h3 class="filter-title">Category</h3>
                         <ul class="filter-list">
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Nandhini Exclusive</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Arani Handlooms</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Wedding Special</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Heritage Collection</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> All Sarees</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Silk Sarees</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Cotton Sarees</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Fancy Sarees</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Wedding Collection</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Daily Wear</label></li>
                         </ul>
                     </div>
 
@@ -62,14 +64,6 @@
                     </div>
 
                     <div class="filter-group">
-                        <h3 class="filter-title">Rating</h3>
-                        <ul class="filter-list">
-                            <li class="rating-item"><input type="checkbox"> <div class="stars-small">★★★★★</div></li>
-                            <li class="rating-item"><input type="checkbox"> <div class="stars-small">★★★★☆</div></li>
-                        </ul>
-                    </div>
-
-                    <div class="filter-group">
                         <label class="stock-toggle">
                             <span>In Stock Only</span>
                             <input type="checkbox" hidden checked>
@@ -85,7 +79,7 @@
                     <!-- Filter Chips -->
                     <div class="filter-chips-section">
                         <div class="chips-container">
-                            <span class="chip active">All {{ $category->name }}</span>
+                            <span class="chip active"> {{ $category->name }}</span>
                             <span class="chip">New Arrivals</span>
                             <span class="chip">Best Sellers</span>
                             <span class="chip">Trending</span>
@@ -149,7 +143,8 @@
                                         </p>
                                     </div>
                                 </a>
-                                <button class="add-to-cart-v2">Add to Cart</button>
+                                <a href="{{ route('product.show', $product->slug) }}" class="add-to-cart-v2" style="text-decoration: none; display: block; text-align: center;">View Details</a>
+                                
                             </article>
                             @endforeach
                         @else

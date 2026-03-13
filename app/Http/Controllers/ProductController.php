@@ -20,19 +20,15 @@ class ProductController extends Controller
     {
         $viewName = 'sarees';
 
-        if ($slug) {
-            $category = Category::where('slug', $slug)->firstOrFail();
-            $products = $category->products()->paginate(12);
-            if (view()->exists($slug)) {
-                $viewName = $slug;
-            }
-        } else {
-            $category = (object)[
-                'name' => 'All Sarees',
-                'slug' => null,
-                'description' => 'Browse our entire collection of exquisite sarees.'
-            ];
-            $products = Product::paginate(12);
+        if (!$slug) {
+            $slug = 'sarees';
+        }
+
+        $category = Category::where('slug', $slug)->firstOrFail();
+        $products = $category->products()->paginate(12);
+        
+        if (view()->exists($slug)) {
+            $viewName = $slug;
         }
 
         return view($viewName, compact('category', 'products'));

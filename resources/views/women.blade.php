@@ -30,19 +30,26 @@
                     <div class="filter-group">
                         <h3 class="filter-title">Category</h3>
                         <ul class="filter-list">
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Salwar Materials</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Readymade Chudidhars</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Designer Blouses</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Ethnic Gowns</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Salwar
+                                    Materials</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Readymade
+                                    Chudidhars</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Designer
+                                    Blouses</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Ethnic Gowns</label>
+                            </li>
                         </ul>
                     </div>
 
                     <div class="filter-group">
                         <h3 class="filter-title">Fabric</h3>
                         <ul class="filter-list">
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Silk Cotton</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Pure Cotton</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Georgette</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Silk Cotton</label>
+                            </li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Pure Cotton</label>
+                            </li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Georgette</label>
+                            </li>
                             <li class="filter-item"><label class="filter-label"><input type="checkbox"> Chiffon</label></li>
                         </ul>
                     </div>
@@ -50,10 +57,13 @@
                     <div class="filter-group">
                         <h3 class="filter-title">Color</h3>
                         <ul class="filter-list">
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Turquoise</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Turquoise</label>
+                            </li>
                             <li class="filter-item"><label class="filter-label"><input type="checkbox"> Peach</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Lavender</label></li>
-                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Emerald Green</label></li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Lavender</label>
+                            </li>
+                            <li class="filter-item"><label class="filter-label"><input type="checkbox"> Emerald
+                                    Green</label></li>
                         </ul>
                     </div>
 
@@ -84,19 +94,23 @@
                     <div class="product-listing-header">
                         <div class="header-left">
                             <h2 class="category-main-title">{{ $category->name }}</h2>
-                            <span class="result-count">Showing {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of {{ $products->total() ?? 0 }} products</span>
+                            <span class="result-count">Showing
+                                {{ $products->firstItem() ?? 0 }}-{{ $products->lastItem() ?? 0 }} of
+                                {{ $products->total() ?? 0 }} products</span>
                         </div>
 
                         <div style="display: flex; align-items: center;">
                             <div class="view-toggle">
                                 <button class="view-btn active" title="Grid View">
                                     <svg width="18" height="18" viewBox="0 0 24 24">
-                                        <path d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z" />
+                                        <path
+                                            d="M4 4h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 10h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4zM4 16h4v4H4zm6 0h4v4h-4zm6 0h4v4h-4z" />
                                     </svg>
                                 </button>
                                 <button class="view-btn" title="List View">
                                     <svg width="18" height="18" viewBox="0 0 24 24">
-                                        <path d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" />
+                                        <path
+                                            d="M4 14h4v-4H4v4zm0 5h4v-4H4v4zM4 9h4V5H4v4zm5 5h12v-4H9v4zm0 5h12v-4H9v4zM9 5v4h12V5H9z" />
                                     </svg>
                                 </button>
                             </div>
@@ -113,33 +127,37 @@
                     <div class="product-grid-main">
                         @if ($products->count() > 0)
                             @foreach ($products as $product)
-                            <article class="product-card-v2">
-                                <div class="card-actions-overlay">
-                                    <button class="overlay-btn" aria-label="Add to Wishlist">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="#666">
-                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                        </svg>
-                                    </button>
-                                </div>
-                                <a href="{{ route('product.show', $product->slug) }}" style="text-decoration: none; color: inherit;">
-                                    <div class="product-image-v2">
-                                        <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}" alt="{{ $product->name }}">
+                                <article class="product-card-v2">
+                                    <div class="card-actions-overlay">
+                                        <button class="overlay-btn" aria-label="Add to Wishlist">
+                                            <svg width="18" height="18" viewBox="0 0 24 24" fill="#666">
+                                                <path
+                                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                            </svg>
+                                        </button>
                                     </div>
-                                    <div class="product-info-v2">
-                                        <div class="product-rating-v2">★★★★★</div>
-                                        <span class="product-category-v2">{{ $product->category->name ?? 'Collection' }}</span>
-                                        <h3 class="product-name-v2">{{ $product->name }}</h3>
-                                        <p class="product-desc-v2">{{ Str::limit(strip_tags($product->description), 80) }}</p>
-                                        <p class="product-price-v2">
-                                            ₹{{ number_format($product->price, 0) }}
-                                            @if($loop->index % 3 == 0)
-                                                <span class="product-price-old">₹{{ number_format($product->price * 1.2, 0) }}</span>
-                                            @endif
-                                        </p>
-                                    </div>
-                                </a>
-                                <button class="add-to-cart-v2">Add to Cart</button>
-                            </article>
+                                    <a href="{{ route('product.show', $product->slug) }}"
+                                        style="text-decoration: none; color: inherit;">
+                                        <div class="product-image-v2">
+                                            <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}"
+                                                alt="{{ $product->name }}">
+                                        </div>
+                                        <div class="product-info-v2">
+                                            <div class="product-rating-v2">★★★★★</div>
+                                            <span class="product-category-v2">{{ $product->category->name ?? 'Collection' }}</span>
+                                            <h3 class="product-name-v2">{{ $product->name }}</h3>
+                                            <p class="product-desc-v2">{{ Str::limit(strip_tags($product->description), 80) }}</p>
+                                            <p class="product-price-v2">
+                                                ₹{{ number_format($product->price, 0) }}
+                                                @if($loop->index % 3 == 0)
+                                                    <span
+                                                        class="product-price-old">₹{{ number_format($product->price * 1.2, 0) }}</span>
+                                                @endif
+                                            </p>
+                                        </div>
+                                    </a>
+                                    <a href="{{ route('product.show', $product->slug) }}" class="add-to-cart-v2" style="text-decoration: none; display: block; text-align: center;">View Details</a>
+                                </article>
                             @endforeach
                         @else
                             <div class="no-products">
@@ -149,7 +167,9 @@
                     </div>
 
                     <div class="load-more-container" style="text-align: center; margin-top: 40px;">
-                        <button class="btn-load-more" style="background: #A91B43; color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Load More Products</button>
+                        <button class="btn-load-more"
+                            style="background: #A91B43; color: white; padding: 12px 30px; border: none; border-radius: 50px; cursor: pointer; font-weight: 600;">Load
+                            More Products</button>
                     </div>
 
                     <div class="pagination-container" style="margin-top: 30px;">

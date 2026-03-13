@@ -36,16 +36,19 @@ class ShopSeeder extends Seeder
                 $products = [
                     ['name' => 'Designer Silk Salwar Material', 'price' => 2890, 'stock' => 20, 'image' => 'women_designer_silk_salwar_suit_lavender_1773214851794.png'],
                     ['name' => 'Ethnic Gown Royal Blue', 'price' => 5490, 'stock' => 8, 'image' => 'women_ethnic_gown_royal_blue_sequin_1773214865055.png'],
+                    ['name' => 'Party Wear Embroidered Saree', 'price' => 3890, 'stock' => 12, 'image' => 'pro2.png'],
                 ];
             } elseif ($cat['name'] === 'Mens') {
                 $products = [
                     ['name' => 'Formal Silk Shirt Ivory', 'price' => 1890, 'stock' => 25, 'image' => 'mens_formal_silk_shirt_ivory_1773214241878.png'],
                     ['name' => 'Silk Dhoti Gold Jari', 'price' => 1290, 'stock' => 30, 'image' => 'mens_silk_dhoti_gold_jari_1773214227860.png'],
+                    ['name' => 'Traditional Silk Kurta Maroon', 'price' => 2490, 'stock' => 15, 'image' => 'mens_traditional_silk_kurta_maroon_1773214257954.png'],
                 ];
             } else { // Kids
                 $products = [
                     ['name' => 'Baby Frock Ethnic Yellow', 'price' => 1490, 'stock' => 12, 'image' => 'kids_baby_frock_ethnic_yellow_1773214306371.png'],
                     ['name' => 'Boys Silk Dhoti Set', 'price' => 2290, 'stock' => 10, 'image' => 'kids_boys_silk_dhoti_set_cream_1773214287724.png'],
+                    ['name' => 'Pattu Pavadai Pink Gold', 'price' => 1890, 'stock' => 15, 'image' => 'kids_pattu_pavadai_pink_gold_1773214272993.png'],
                 ];
             }
 

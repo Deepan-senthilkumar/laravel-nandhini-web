@@ -169,16 +169,17 @@
             <!-- Related Products Section -->
             @if(isset($relatedProducts) && $relatedProducts->count() > 0)
             <section class="related-products" style="margin-top: 80px;">
-                <h2 style="font-size: 28px; margin-bottom: 30px; font-family: 'Great Vibes', cursive; color: #A91B43;">Related Collections</h2>
+                <h2 style="font-size: 32px; color: #ad8b4e; margin-bottom: 40px; font-weight: 600; text-align: center;">Related Collections</h2>
                 <div class="product-grid-main" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
-                    @foreach($relatedProducts as $related)
+                    {{-- Loop twice to "duplicate" products as per user request for visual density --}}
+                    @foreach($relatedProducts->concat($relatedProducts) as $related)
                     <article class="product-card-v2">
                         <a href="{{ route('product.show', $related->slug) }}" style="text-decoration: none; color: inherit;">
                             <div class="product-image-v2">
                                 <img src="{{ $related->image_path ? asset('images/' . $related->image_path) : asset('images/pro.png') }}" alt="{{ $related->name }}">
                             </div>
                             <div class="product-info-v2">
-                                <h3 class="product-name-v2" style="font-size: 16px;">{{ $related->name }}</h3>
+                                <h3 class="product-name-v2">{{ $related->name }}</h3>
                                 <p class="product-price-v2">₹{{ number_format($related->price, 0) }}</p>
                             </div>
                         </a>
@@ -190,16 +191,28 @@
 
             <!-- Recently Viewed Section (Mocked) -->
             <section class="recently-viewed" style="margin-top: 60px; margin-bottom: 60px;">
-                <h2 style="font-size: 24px; color: #888; margin-bottom: 25px;">Recently Viewed</h2>
-                <div class="product-grid-main" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 15px;">
-                    <div class="mini-product" style="text-align: center;">
-                        <img src="{{ asset('images/pro1.png') }}" style="width: 100%; border-radius: 10px;">
-                        <p style="font-size: 12px; margin-top: 5px;">Pure Silk Saree</p>
-                    </div>
-                    <div class="mini-product" style="text-align: center;">
-                        <img src="{{ asset('images/pro2.png') }}" style="width: 100%; border-radius: 10px;">
-                        <p style="font-size: 12px; margin-top: 5px;">Banarasi Weave</p>
-                    </div>
+                <h2 style="font-size: 32px; color: #ad8b4e; margin-bottom: 40px; font-weight: 600; text-align: center;">Recently Viewed</h2>
+                <div class="product-grid-main" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+                    @for($i = 0; $i < 2; $i++) {{-- Duplicate the mock items to fill the 4 columns --}}
+                    <article class="product-card-v2">
+                        <div class="product-image-v2">
+                            <img src="{{ asset('images/pro1.png') }}" alt="Pure Silk Saree">
+                        </div>
+                        <div class="product-info-v2">
+                            <h3 class="product-name-v2">Pure Silk Saree</h3>
+                            <p class="product-price-v2">₹4,290</p>
+                        </div>
+                    </article>
+                    <article class="product-card-v2">
+                        <div class="product-image-v2">
+                            <img src="{{ asset('images/pro2.png') }}" alt="Banarasi Weave">
+                        </div>
+                        <div class="product-info-v2">
+                            <h3 class="product-name-v2">Banarasi Weave</h3>
+                            <p class="product-price-v2">₹3,890</p>
+                        </div>
+                    </article>
+                    @endfor
                 </div>
             </section>
         </div>
