@@ -406,9 +406,13 @@
             }
 
             .category-card {
+                display: flex !important;
+                flex-direction: column !important;
                 align-items: center !important;
+                justify-content: center !important;
                 text-align: center !important;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+                height: 100% !important;
             }
 
             .category-image-shell {
