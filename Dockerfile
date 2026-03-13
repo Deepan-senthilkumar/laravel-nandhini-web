@@ -7,10 +7,11 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     libzip-dev \
-    libicu-dev
+    libicu-dev \
+    libsqlite3-dev
 
 # Install PHP extensions required by Laravel
-RUN docker-php-ext-install pdo pdo_mysql zip intl
+RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite zip intl
 
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
@@ -32,13 +33,23 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
+# Create SQLite database file
+RUN mkdir -p database && touch database/database.sqlite
+
+# Run migrations and seed data
+# Note: Using --force for production migrations
+RUN php artisan migrate --force && php artisan db:seed --force
+
 # Set permissions required by Laravel
-RUN chown -R www-data:www-data /var/www/html
-RUN chmod -R 775 storage
-RUN chmod -R 775 bootstrap/cache
+RUN chown -R www-data:www-data /var/www/html \
+    && chmod -R 775 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
+
+# Make the start script executable
+RUN chmod +x /var/www/html/docker-start.sh
 
 # Expose Apache port
 EXPOSE 80
 
-# Start Apache
-CMD ["apache2-foreground"]
+# Start with our custom script
+CMD ["/var/www/html/docker-start.sh"]
