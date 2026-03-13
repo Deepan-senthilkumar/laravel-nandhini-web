@@ -1321,6 +1321,13 @@ body {
     z-index: 3001; /* Above the side menu */
   }
 
+  .menu-toggle.active {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    transform: none;
+  }
+
   .nav-item,
   .nav-item-wrapper {
     min-height: auto;
