@@ -21,7 +21,14 @@
                         <div class="thumbnail active" onclick="changeImg('{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}', this)">
                             <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}" alt="Main View">
                         </div>
-                        <!-- Additional thumbnails could be added here if defined in model -->
+                        @if($product->slug === 'exquisite-silk-saree')
+                            <div class="thumbnail" onclick="changeImg('{{ asset('images/product1_2.jpg') }}', this)">
+                                <img src="{{ asset('images/product1_2.jpg') }}" alt="View 2">
+                            </div>
+                            <div class="thumbnail" onclick="changeImg('{{ asset('images/product1_3.jpg') }}', this)">
+                                <img src="{{ asset('images/product1_3.jpg') }}" alt="View 3">
+                            </div>
+                        @endif
                     </div>
                 </div>
 
