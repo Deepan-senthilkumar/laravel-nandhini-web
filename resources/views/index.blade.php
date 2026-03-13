@@ -453,6 +453,15 @@
                 position: static !important;
                 width: 100% !important;
                 height: 200px !important;
+                overflow: hidden !important;
+            }
+
+            .offer-image,
+            .wedding-image {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: top !important;
             }
 
             .offer-content,
