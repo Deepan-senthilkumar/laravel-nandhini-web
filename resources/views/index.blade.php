@@ -405,6 +405,13 @@
                 padding-right: 0;
             }
 
+            .category-link {
+                flex: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
             .category-card {
                 display: flex !important;
                 flex-direction: column !important;
@@ -413,6 +420,7 @@
                 text-align: center !important;
                 padding-bottom: 10px;
                 height: 100% !important;
+                margin: 0 auto !important;
             }
 
             .category-image-shell {

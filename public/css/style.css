@@ -1543,9 +1543,9 @@ body {
   }
 
   .category-card {
-    flex: 0 0 33.333vw !important;
-    width: 33.333vw !important;
-    max-width: none !important;
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
     padding: 0 5px;
     box-sizing: border-box;
     display: flex;
