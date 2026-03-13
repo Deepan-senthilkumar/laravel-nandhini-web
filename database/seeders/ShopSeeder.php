@@ -19,11 +19,13 @@ class ShopSeeder extends Seeder
         ];
 
         foreach ($categories as $cat) {
-            $category = Category::create([
-                'name' => $cat['name'],
-                'slug' => Str::slug($cat['name']),
-                'description' => $cat['description'],
-            ]);
+            $category = Category::updateOrCreate(
+                ['slug' => Str::slug($cat['name'])],
+                [
+                    'name' => $cat['name'],
+                    'description' => $cat['description'],
+                ]
+            );
 
             // Add some products to each category
             if ($cat['name'] === 'Sarees') {
@@ -54,15 +56,17 @@ class ShopSeeder extends Seeder
             }
 
             foreach ($products as $prod) {
-                Product::create([
-                    'category_id' => $category->id,
-                    'name' => $prod['name'],
-                    'slug' => Str::slug($prod['name']),
-                    'price' => $prod['price'],
-                    'stock' => $prod['stock'],
-                    'description' => 'High quality ' . $prod['name'] . ' from Nandhini Silks.',
-                    'image_path' => $prod['image'],
-                ]);
+                Product::updateOrCreate(
+                    ['slug' => Str::slug($prod['name'])],
+                    [
+                        'category_id' => $category->id,
+                        'name' => $prod['name'],
+                        'price' => $prod['price'],
+                        'stock' => $prod['stock'],
+                        'description' => 'High quality ' . $prod['name'] . ' from Nandhini Silks.',
+                        'image_path' => $prod['image'],
+                    ]
+                );
             }
         }
     }

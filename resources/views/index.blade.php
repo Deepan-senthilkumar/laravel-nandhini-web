@@ -405,21 +405,34 @@
                 padding-right: 0;
             }
 
+            .category-link {
+                flex: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+                margin: 0 !important;
+            }
+
             .category-card {
+                display: flex !important;
+                flex-direction: column !important;
                 align-items: center !important;
+                justify-content: center !important;
                 text-align: center !important;
-                padding-bottom: 5px;
+                padding-bottom: 10px;
+                height: 100% !important;
+                margin: 0 auto !important;
             }
 
             .category-image-shell {
-                width: 100px !important;
-                height: 100px !important;
+                width: 85px !important;
+                height: 85px !important;
                 margin: 0 auto !important;
             }
 
             .category-name {
                 font-size: 13px !important;
                 margin-top: 8px !important;
+                white-space: nowrap;
             }
 
             .category-prev {
@@ -453,6 +466,15 @@
                 position: static !important;
                 width: 100% !important;
                 height: 200px !important;
+                overflow: hidden !important;
+            }
+
+            .offer-image,
+            .wedding-image {
+                width: 100% !important;
+                height: 100% !important;
+                object-fit: cover !important;
+                object-position: top !important;
             }
 
             .offer-content,
@@ -866,8 +888,9 @@
                 });
 
                 new Swiper('.category-swiper', {
-                    slidesPerView: 3,
-                    spaceBetween: 8, // Reduced spacing for categories
+                    slidesPerView: 3, // Base mobile specifically
+                    slidesPerGroup: 1,
+                    spaceBetween: 8,
                     loop: true,
                     autoplay: {
                         delay: 3500,
@@ -971,46 +994,6 @@
                     progressTrack.addEventListener('click', seekFeaturedProducts);
                 }
 
-                new Swiper('.category-swiper', {
-                    slidesPerView: 2,
-                    slidesPerGroup: 1,
-                    spaceBetween: 10,
-                    loop: true,
-                    watchOverflow: false,
-                    autoplay: {
-                        delay: 4000,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.category-next',
-                        prevEl: '.category-prev',
-                    },
-                    breakpoints: {
-                        640: { slidesPerView: 3, spaceBetween: 12 },
-                        768: { slidesPerView: 4, spaceBetween: 15 },
-                        1024: { slidesPerView: 5, spaceBetween: 20 },
-                        1280: { slidesPerView: 6, spaceBetween: 24 },
-                    }
-                });
-
-                new Swiper('.testimonial-swiper', {
-                    slidesPerView: 1,
-                    spaceBetween: 30,
-                    loop: true,
-                    watchOverflow: false,
-                    autoplay: {
-                        delay: 3500,
-                        disableOnInteraction: false,
-                    },
-                    navigation: {
-                        nextEl: '.testimonial-next',
-                        prevEl: '.testimonial-prev',
-                    },
-                    breakpoints: {
-                        768: { slidesPerView: 2 },
-                        1024: { slidesPerView: 3 },
-                    }
-                });
             });
         </script>
     @endpush
