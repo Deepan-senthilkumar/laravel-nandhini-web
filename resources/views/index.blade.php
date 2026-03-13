@@ -416,14 +416,15 @@
             }
 
             .category-image-shell {
-                width: 100px !important;
-                height: 100px !important;
+                width: 85px !important;
+                height: 85px !important;
                 margin: 0 auto !important;
             }
 
             .category-name {
                 font-size: 13px !important;
                 margin-top: 8px !important;
+                white-space: nowrap;
             }
 
             .category-prev {
@@ -879,7 +880,7 @@
                 });
 
                 new Swiper('.category-swiper', {
-                    slidesPerView: 3,
+                    slidesPerView: 3, // Base mobile specifically
                     slidesPerGroup: 1,
                     spaceBetween: 8,
                     loop: true,
