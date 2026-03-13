@@ -537,7 +537,7 @@
                         <article class="collection-card">
                             <a href="{{ url('sarees') }}" class="card-link-wrapper">
                                 <div class="collection-image-wrap">
-                                    <img src="{{ asset('images/product1_1.jpg') }}" alt="Pure Silk Saree" />
+                                    <img src="{{ asset('images/Image.png') }}" alt="Pure Silk Saree" />
                                 </div>
                                 <h3 class="collection-name">Pure Silk Saree</h3>
                             </a>
@@ -623,23 +623,6 @@
             <div class="featured-swiper-container" style="position: relative;">
                 <div class="swiper featured-swiper">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article class="featured-card">
-                                <a href="{{ url('sarees') }}" class="card-link-wrapper">
-                                    <div class="featured-media">
-                                        <img src="{{ asset('images/product1_1.jpg') }}" alt="New Saree Arrival" />
-                                        <span class="featured-badge">New Arrival</span>
-                                    </div>
-                                    <h3 class="featured-name">Exquisite Silk Saree</h3>
-                                </a>
-                                <div class="featured-footer">
-                                    <span class="featured-price">&#8377; 4,999 INR</span>
-                                    <button class="featured-cart" type="button">
-                                        <img src="{{ asset('images/Vector.svg') }}" alt="" />
-                                    </button>
-                                </div>
-                            </article>
-                        </div>
                         @foreach ($featuredProducts as $product)
                             <div class="swiper-slide">
                                 <article class="featured-card">
