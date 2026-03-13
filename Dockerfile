@@ -21,11 +21,11 @@ ENV APACHE_DOCUMENT_ROOT /var/www/html/public
 
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
-# Copy project files
-COPY . /var/www/html
-
 # Set working directory
 WORKDIR /var/www/html
+
+# Copy project files
+COPY . /var/www/html
 
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -44,6 +44,9 @@ RUN php artisan migrate --force && php artisan db:seed --force
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage \
     && chmod -R 775 /var/www/html/bootstrap/cache
+
+# Make the start script executable
+RUN chmod +x /var/www/html/docker-start.sh
 
 # Make the start script executable
 RUN chmod +x /var/www/html/docker-start.sh
