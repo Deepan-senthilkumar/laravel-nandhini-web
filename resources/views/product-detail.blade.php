@@ -12,7 +12,6 @@
             </div>
 
             <div class="product-detail-grid">
-                <!-- Gallery Section -->
                 <div class="product-gallery">
                     <div class="main-product-image" id="zoomContainer">
                         <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}" alt="{{ $product->name }}" id="mainImg">
@@ -21,7 +20,15 @@
                         <div class="thumbnail active" onclick="changeImg('{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}', this)">
                             <img src="{{ $product->image_path ? asset('images/' . $product->image_path) : asset('images/pro.png') }}" alt="Main View">
                         </div>
-                        <!-- Additional thumbnails could be added here if defined in model -->
+                        <div class="thumbnail" onclick="changeImg('{{ asset('images/product1_1.jpg') }}', this)">
+                            <img src="{{ asset('images/product1_1.jpg') }}" alt="View 1">
+                        </div>
+                        <div class="thumbnail" onclick="changeImg('{{ asset('images/product1_2.jpg') }}', this)">
+                            <img src="{{ asset('images/product1_2.jpg') }}" alt="View 2">
+                        </div>
+                        <div class="thumbnail" onclick="changeImg('{{ asset('images/product1_3.jpg') }}', this)">
+                            <img src="{{ asset('images/product1_3.jpg') }}" alt="View 3">
+                        </div>
                     </div>
                 </div>
 
