@@ -613,14 +613,14 @@
 
                     <div class="swiper-slide">
                         <article class="collection-card">
-                            <a href="{{ url('sarees') }}" class="card-link-wrapper">
+                            <a href="{{ url('product/exquisite-silk-saree') }}" class="card-link-wrapper">
                                 <div class="collection-image-wrap">
-                                    <img src="{{ asset('images/Image (4).png') }}" alt="Banarasi Silk Saree" />
+                                    <img src="{{ asset('images/product1_1.jpg') }}" alt="Exquisite Silk Saree" />
                                 </div>
-                                <h3 class="collection-name">Banarasi Silk Saree</h3>
+                                <h3 class="collection-name">Exquisite Silk Saree</h3>
                             </a>
                             <button class="collection-cta" type="button"
-                                onclick="window.location.href='{{ url('sarees') }}'">Shop
+                                onclick="window.location.href='{{ url('product/exquisite-silk-saree') }}'">Shop
                                 Now</button>
                         </article>
                     </div>
