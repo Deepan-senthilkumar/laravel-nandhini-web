@@ -13,9 +13,10 @@ RUN apt-get update && apt-get install -y \
 # Install PHP extensions required by Laravel
 RUN docker-php-ext-install pdo pdo_mysql pdo_sqlite zip intl
 
-# Enable Apache rewrite and configure MPM
+# Enable Apache rewrite and configure MPM correctly
 RUN a2enmod rewrite && \
-    a2dismod mpm_event && \
+    a2dismod mpm_event || true && \
+    a2dismod mpm_worker || true && \
     a2enmod mpm_prefork
 # Enable Apache mod_rewrite
 RUN a2enmod rewrite
