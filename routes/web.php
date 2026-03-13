@@ -105,3 +105,11 @@ Route::get('/exchange-policy', function () {
 Route::get('/fabric-care', function () {
     return view('fabric-care');
 });
+
+// Admin Panel Routes
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->names('admin.users');
+    Route::resource('events', \App\Http\Controllers\Admin\EventController::class)->names('admin.events');
+    Route::get('/settings', [\App\Http\Controllers\Admin\SettingsController::class, 'index'])->name('admin.settings');
+});
